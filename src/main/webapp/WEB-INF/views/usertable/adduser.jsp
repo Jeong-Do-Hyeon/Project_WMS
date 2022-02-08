@@ -45,25 +45,26 @@ desired effect
     <section class="content container-fluid">
 
       <h3>사용자추가</h3>
-      <table>
-      	<tr>
-      		<th>아이디(최대 15자)</th>
-      		<td><input type="text" maxlength="15"></td>
-      	</tr>
-      	<tr>
-      		<th>비밀번호(최대 20자)</th>
-      		<th><input type="password" maxlength="20"></th>
-      	</tr>
-      	<tr>
-      		<th>비밀번호확인</th>
-      		<th><input type="password" maxlength="20"></th>
-      	</tr>
-      	<tr>
-      		<th><button type="submit">사용자추가</button></th>
-      		<th><button type="reset">취소</button></th>
-      	</tr>
-      </table>
-      
+      <form>
+	      <table>
+	      	<tr>
+	      		<th>아이디(최대 15자)</th>
+	      		<td><input type="text" maxlength="15"></td>
+	      	</tr>
+	      	<tr>
+	      		<th>비밀번호(최대 20자)</th>
+	      		<th><input type="password" maxlength="20"></th>
+	      	</tr>
+	      	<tr>
+	      		<th>비밀번호확인</th>
+	      		<th><input type="password" maxlength="20"></th>
+	      	</tr>
+	      	<tr>
+	      		<th><button type="submit">사용자추가</button></th>
+	      		<th><button type="reset">취소</button></th>
+	      	</tr>
+	      </table>
+      </form>
       
 
     </section>
