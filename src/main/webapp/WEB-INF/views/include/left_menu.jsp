@@ -50,7 +50,7 @@
             <li><a href="#">전표발행</a></li>
           </ul>
           <li><a href="#"><i class="fa fa-link"></i> <span>재고정보</span></a></li>
-          <li><a href="#"><i class="fa fa-link"></i> <span>사용자추가</span></a></li>
+          <li><a href="/usertable/adduser"><i class="fa fa-link"></i> <span>사용자추가</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
