@@ -43,30 +43,8 @@ desired effect
     <!-- Content Header (Page header) -->
     <!-- Main content -->
     <section class="content container-fluid">
-
-      <h3>사용자추가</h3>
-      <form action="/usertable/adduser" method="post">
-	      <table>
-	      	<tr>
-	      		<th>아이디(최대 15자)</th>
-	      		<td><input type="text" id="id" name="id" maxlength="15"></td>
-	      		<th><button type="button">아이디 중복확인</button>
-	      	</tr>
-	      	<tr>
-	      		<th>비밀번호(최대 20자)</th>
-	      		<th><input type="password" id="passwd" name="passwd" maxlength="20"></th>
-	      	</tr>
-	      	<tr>
-	      		<th>비밀번호확인</th>
-	      		<th><input type="password" maxlength="20"></th>
-	      	</tr>
-	      	<tr>
-	      		<th><button type="submit">사용자추가</button></th>
-	      		<th><button type="reset">취소</button></th>
-	      	</tr>
-	      </table>
-      </form>
-      
+    
+    <!-- contents here -->
 
     </section>
     <!-- /.content -->
