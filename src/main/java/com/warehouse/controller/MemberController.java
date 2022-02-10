@@ -97,10 +97,12 @@ public class MemberController {
 		
 		MemberVO session_vo = (MemberVO) session.getAttribute("loginStatus");
 		
+		
 		if(cryptPassEnc.matches(vo.getPasswd(), session_vo.getPasswd())) {
 			
 			service.modify(vo);
 			
+						
 			redirectURL = "/usertable/modify";
 			rttr.addFlashAttribute("msg","modifyOK");	// "/" 주의 index.jsp에서 msg를 참조해서 사용
 			
@@ -110,9 +112,7 @@ public class MemberController {
 			rttr.addFlashAttribute("msg","modifyFail");	// "modify.jsp"에서 msg를 참조해서 사용
 		}
 		
-		
-		return "redirect:/usertable/modify";
-		
+		return "redirect:" + redirectURL;
 	}
 	
 
