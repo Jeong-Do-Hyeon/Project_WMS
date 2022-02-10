@@ -27,9 +27,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+<<<<<<< HEAD
+	public String checkID(String id) {
+		// TODO Auto-generated method stub
+		return mapper.checkID(id);
+	}
+
+	@Override
+	public MemberVO login(String id) {
+		// TODO Auto-generated method stub
+		return mapper.login(id);
+=======
 	public String checkid(String id) {
 		// TODO Auto-generated method stub
 		return null;
+>>>>>>> refs/remotes/origin/master
 	}
 
 }

@@ -35,10 +35,17 @@
               <li class="user-footer" style="padding-top: 10px">
               
                 <div class="pull-left">
+<<<<<<< HEAD
+                  <a href="/usertable/modify" class="btn btn-default btn-flat">비밀번호 변경</a>
+                </div>
+                <div class="pull-right">
+                  <a href="/usertable/login" class="btn btn-default btn-flat">로그아웃</a>
+=======
                   <a href="#" class="btn btn-default btn-flat">비밀번호 변경</a>
                 </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat">로그아웃</a>
+>>>>>>> refs/remotes/origin/master
                 </div>
               </li>
             </ul>
