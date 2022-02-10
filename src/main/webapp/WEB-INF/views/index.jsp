@@ -33,6 +33,25 @@ desired effect
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
+	<script>
+	
+		let msg = '${msg}'; // EL구문, 'modifyOK'
+		if(msg == 'modifyOK'){
+			alert("회원정보가 수정됨")
+		}
+	
+	</script>
+	
+	<script>
+	
+		let msg = '${msg}'; // EL구문, 'modifyFail'
+		if(msg == 'modifyFail'){
+			alert("비밀번호 확인")
+		}
+	
+	</script>
+
+
   <!-- Main Header -->
   <%@include file="/WEB-INF/views/include/header.jsp" %>
   <!-- Left side column. contains the logo and sidebar -->

@@ -44,14 +44,9 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
 
-      <h3>사용자수정</h3>
-<<<<<<< HEAD
-      <form id="adduserform" action="/usertable/adduser" method="post">
+      <h3>비밀번호수정</h3>
+      <form id="modifyform" action="/usertable/modify" method="post">
 	      <table>
-	      	<tr>
-	      		<th>아이디(최대 15자)</th>
-	      		<td><input type="text" id="id" name="id" maxlength="15"></td>
-	      	</tr>
 	      	<tr>
 	      		<th>비밀번호(최대 20자)</th>
 	      		<th><input type="password" id="passwd" name="passwd" maxlength="20"></th>
@@ -61,7 +56,7 @@ desired effect
 	      		<th><input type="password" id="passwdcheck" name="passwdcheck" maxlength="20"></th>
 	      	</tr>
 	      	<tr>
-	      		<th><button type="button" id="btnadduser" name="btnadduser">사용자추가</button></th>
+	      		<th><button type="button" id="modify" name="modify">비밀번호 변경</button></th>
 	      		<th><button type="reset">취소</button></th>
 	      	</tr>
 	      </table>
@@ -82,89 +77,35 @@ desired effect
 
   $(document).ready(function(){
 
-    //아이디중복체크
-    $("#btnadduser").on("click", function(){
+    $("#modify").on("click", function(){
 
-      let id = $("#id");
       let passwd = $("#passwd");
-      let passwdcheck = $("#passwdcheck")
-
-      if(id.val() == "" || id.val() == null){
-        alert("아이디를 입력하세요");
-        id.focus();
-        return false;
-      }
-
-      $.ajax({
-        url: '/usertable/checkID',
-        type: 'get',
-        dataType: 'text',
-        data: { id : id.val() },
-        success: function(data){
+      let passwdcheck = $("#passwdcheck");
           
-          if(data == "N"){
-        	alert("아이디 사용불가");
-            id.val("");
-            return false;
-          }
-          
-          if (passwd.val() != passwdcheck.val()){
+      if(passwd.val() == "" && passwdcheck.val() == ""){
+    	  alert("비밀번호 입력")
+    	  return;
+      }   
+      
+      
+      if (passwd.val() != passwdcheck.val()){
            	alert("비밀번호 불일치");
            	passwd.val("");
            	passwdcheck.val("");
            	$("#passwd").focus();
-           	return false; 
+           	return; 
           }
           
-          $("#adduserform").submit();
+          $("#modifyform").submit();
           
-          }
+          
         
         });
       
       
       
-      });
-    });  
+      }); 
   
-</script>  
-=======
-      <form>
-	      <table>
-	      	<tr>
-	      		<th>아이디(최대 15자)</th>
-	      		<td><input type="text" maxlength="15"></td>
-	      		<th><button type="button">아이디 중복확인</button>
-	      	</tr>
-	      	<tr>
-	      		<th>비밀번호(최대 20자)</th>
-	      		<th><input type="password" maxlength="20"></th>
-	      	</tr>
-	      	<tr>
-	      		<th>비밀번호확인</th>
-	      		<th><input type="password" maxlength="20"></th>
-	      	</tr>
-	      	<tr>
-	      		<th><button type="submit">사용자추가</button></th>
-	      		<th><button type="reset">취소</button></th>
-	      	</tr>
-	      </table>
-      </form>
-      
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer (기타 footer태그밑에 소스포함)-->
-  <%@include file="/WEB-INF/views/include/footer.jsp" %>
-</div>
-<!-- ./wrapper -->
->>>>>>> refs/remotes/origin/master
-
-<!-- REQUIRED JS SCRIPTS -->
-<%@include file="/WEB-INF/views/include/plugin_js.jsp" %>
-
+</script>
 </body>
 </html>

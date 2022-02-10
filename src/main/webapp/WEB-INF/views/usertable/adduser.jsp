@@ -45,7 +45,6 @@ desired effect
     <section class="content container-fluid">
 
       <h3>사용자추가</h3>
-<<<<<<< HEAD
       <form id="adduserform" action="/usertable/adduser" method="post">
 	      <table>
 	      	<tr>
@@ -127,44 +126,6 @@ desired effect
       });
     });  
   
-</script>  
-=======
-      <form action="/usertable/adduser" method="post">
-	      <table>
-	      	<tr>
-	      		<th>아이디(최대 15자)</th>
-	      		<td><input type="text" id="id" name="id" maxlength="15"></td>
-	      		<th><button type="button">아이디 중복확인</button>
-	      	</tr>
-	      	<tr>
-	      		<th>비밀번호(최대 20자)</th>
-	      		<th><input type="password" id="passwd" name="passwd" maxlength="20"></th>
-	      	</tr>
-	      	<tr>
-	      		<th>비밀번호확인</th>
-	      		<th><input type="password" maxlength="20"></th>
-	      	</tr>
-	      	<tr>
-	      		<th><button type="submit">사용자추가</button></th>
-	      		<th><button type="reset">취소</button></th>
-	      	</tr>
-	      </table>
-      </form>
-      
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer (기타 footer태그밑에 소스포함)-->
-  <%@include file="/WEB-INF/views/include/footer.jsp" %>
-</div>
-<!-- ./wrapper -->
->>>>>>> refs/remotes/origin/master
-
-<!-- REQUIRED JS SCRIPTS -->
-<%@include file="/WEB-INF/views/include/plugin_js.jsp" %>
-
+</script>
 </body>
 </html>

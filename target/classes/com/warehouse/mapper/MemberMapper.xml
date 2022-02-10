@@ -4,7 +4,6 @@
 	
 	<insert id="adduser" parameterType="com.warehouse.domain.MemberVO">
 		
-<<<<<<< HEAD
 		INSERT INTO usertable (id, passwd) VALUES(#{id}, #{passwd})
 		
 	</insert>
@@ -18,17 +17,14 @@
 	<select id="login" resultType="com.warehouse.domain.MemberVO">
 	
 		SELECT id, passwd FROM usertable WHERE id = #{id}
-=======
-		INSERT INTO USERTABLE (id, passwd) VALUES(#{id}, #{passwd})
-		
-	</insert>
-	
-	<select id="checkID">
-	
-		SELECT id FROM USERTABLE WHERE id = #{id}
->>>>>>> refs/remotes/origin/master
 	
 	</select>
+	
+	<update id="modify">
+	
+		UPDATE usertable SET passwd = #{passwd} WHERE id = #{id}
+	
+	</update>
 	
 	
 </mapper>

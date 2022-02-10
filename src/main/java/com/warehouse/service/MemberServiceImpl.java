@@ -27,7 +27,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public String checkID(String id) {
 		// TODO Auto-generated method stub
 		return mapper.checkID(id);
@@ -37,11 +36,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO login(String id) {
 		// TODO Auto-generated method stub
 		return mapper.login(id);
-=======
-	public String checkid(String id) {
-		// TODO Auto-generated method stub
-		return null;
->>>>>>> refs/remotes/origin/master
-	}
+}
 
+	@Override
+	public int modify(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.modify(vo);
+	}
 }
