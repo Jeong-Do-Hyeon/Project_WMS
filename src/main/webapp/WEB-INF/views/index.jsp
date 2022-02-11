@@ -30,9 +30,6 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-
 	<script>
 	
 		let msg = '${msg}'; // EL구문, 'modifyOK'
@@ -41,16 +38,10 @@ desired effect
 		}
 	
 	</script>
-	
-	<script>
-	
-		let msg = '${msg}'; // EL구문, 'modifyFail'
-		if(msg == 'modifyFail'){
-			alert("비밀번호 확인")
-		}
-	
-	</script>
 
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
   <!-- Main Header -->
   <%@include file="/WEB-INF/views/include/header.jsp" %>

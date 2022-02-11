@@ -48,6 +48,10 @@ desired effect
       <form id="modifyform" action="/usertable/modify" method="post">
 	      <table>
 	      	<tr>
+	      		<th>아이디(최대 15자)</th>
+	      		<td><input type="text" id="id" name="id" maxlength="15" value='<c:out value="${memberVO.id}" />' readonly></td>
+	      	</tr>
+	      	<tr>
 	      		<th>비밀번호(최대 20자)</th>
 	      		<th><input type="password" id="passwd" name="passwd" maxlength="20"></th>
 	      	</tr>
