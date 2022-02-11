@@ -1,5 +1,7 @@
 package com.warehouse.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.warehouse.domain.MemberVO;
 
 public interface MemberMapper {

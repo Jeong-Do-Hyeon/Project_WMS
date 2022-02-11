@@ -6,6 +6,7 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
+
 <!-- css, js 파일포함 -->
 <!-- 절대경로  /WEB-INF/views/include/header_info.jsp -->
 <%@include file="/WEB-INF/views/include/header_info.jsp" %>
@@ -98,8 +99,8 @@ desired effect
            	passwdcheck.val("");
            	$("#passwd").focus();
            	return; 
-          }
-          
+      }
+  
           $("#modifyform").submit();
           
           

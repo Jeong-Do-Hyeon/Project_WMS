@@ -98,20 +98,22 @@ public class MemberController {
 		MemberVO session_vo = (MemberVO) session.getAttribute("loginStatus");
 		
 		
+		
 		if(cryptPassEnc.matches(vo.getPasswd(), session_vo.getPasswd())) {
 			
 			service.modify(vo);
 			
 						
 			redirectURL = "/usertable/modify";
-			rttr.addFlashAttribute("msg","modifyOK");	// "/" 주의 index.jsp에서 msg를 참조해서 사용
-			
-		
-		}else {
+			rttr.addFlashAttribute("msg", "modifyOk");
+		}
+		else {
 			redirectURL = "/usertable/modify";
-			rttr.addFlashAttribute("msg","modifyFail");	// "modify.jsp"에서 msg를 참조해서 사용
+			rttr.addFlashAttribute("msg", "modifyFail");
 		}
 		
+		
+
 		return "redirect:" + redirectURL;
 	}
 	
@@ -162,4 +164,4 @@ public class MemberController {
 		
 		return "redirect:/usertable/login";
 	}
-}
+	}

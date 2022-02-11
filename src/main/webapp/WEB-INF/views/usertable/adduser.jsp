@@ -114,7 +114,7 @@ desired effect
            	$("#passwd").focus();
            	return false; 
           }
-          
+          alert("사용자추가 성공")
           $("#adduserform").submit();
           
           }
