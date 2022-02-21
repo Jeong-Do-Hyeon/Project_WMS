@@ -35,6 +35,15 @@ desired effect
 
   <!-- Main Header -->
   <%@include file="/WEB-INF/views/include/header.jsp" %>
+  
+  <style>
+  	table, th, td {
+  	border: 0.5px solid black;
+	}
+  </style>
+  
+  
+  
   <!-- Left side column. contains the logo and sidebar -->
   <%@include file="/WEB-INF/views/include/left_menu.jsp" %>
 
@@ -44,7 +53,22 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
     
-    <!-- contents here -->
+    <button id="search">검색</button>
+    <button id="createlot">LOT생성</button>
+    <button id="printqr">바코드출력</button>
+    <button id="refresh" onclick="window.location.reload()">새로고침</button>
+    
+    <table id="impTable" class="table">
+    	<thead>
+    		<tr class="menu">
+    			<td class="text-center"><strong><input type="checkbox" name="check"></strong></td>
+    			<td class="text-center"><strong>상품이름</strong></td>
+    			<td class="text-center"><strong>판매이름</strong></td>
+    			<td class="text-center"><strong>LOT</strong></td>
+    		</tr>
+    	</thead>
+    </table>
+    	
 
     </section>
     <!-- /.content -->

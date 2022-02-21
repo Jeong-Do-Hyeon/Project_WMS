@@ -35,6 +35,37 @@ desired effect
 
   <!-- Main Header -->
   <%@include file="/WEB-INF/views/include/header.jsp" %>
+  <script>
+  	function rowAdd(){
+  		var trCnt = $('#impTable tr').length;
+  		var innerHtml = "";
+  		innerHtml += '<tr style="font-size: 12px; font-weight= 600;">';
+  		innerHtml += '	<td class="text-center"><input type="checkbox" name="check"></td>';
+  		innerHtml += '	<td class="text-center">'+trCnt+'</td>';
+  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '</tr>';
+  		
+  		$('#impTable').append(innerHtml);
+  	}
+  </script>
+  <script>
+  	function rowDelete(){
+  		$('#impTable').remove();
+  	}
+  
+  </script>
+  <style>
+  	table, th, td {
+  	border: 0.5px solid black;
+	}
+  </style>
+  
+  
+  
   <!-- Left side column. contains the logo and sidebar -->
   <%@include file="/WEB-INF/views/include/left_menu.jsp" %>
 
@@ -44,7 +75,42 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
     
-    <!-- contents here -->
+    <button id="search">검색</button>
+    <button id="add" onclick="rowAdd();">라인추가</button>
+    <button id="save">신규등록</button>
+    <button id="modify">수정</button>
+    <button id="delete">삭제</button>
+    <button id="refresh" onclick="window.location.reload()">새로고침</button>
+    
+    <table id="impTable" class="table">
+    	<thead>
+    		<tr class="menu">
+    			<td class="text-center"><strong><input type="checkbox" name="check"></strong></td>
+    			<td class="text-center"><strong>No.</strong></td>
+    			<td class="text-center"><strong>입고상태</strong></td>
+    			<td class="text-center"><strong>입고번호</strong></td>
+    			<td class="text-center"><strong>공급처</strong></td>
+    			<td class="text-center"><strong>입고일자</strong></td>
+    			<td class="text-center"><strong>비고</strong></td>
+    		</tr>
+    	</thead>
+    </table>
+    
+    <!-- 
+      	<tbody id="contents">
+    		<tr style="font-size: 12px; font-weight: 600;">
+    			<td class="text-center"><strong></strong></td>
+    			<td class="text-center"><strong>No.</strong></td>
+    			<td class="text-center"><strong>입고상태</strong></td>
+    			<td class="text-center"><strong>입고번호</strong></td>
+    			<td class="text-center"><strong>공급처</strong></td>
+    			<td class="text-center"><strong>입고일자</strong></td>
+    			<td class="text-center"><strong>비고</strong></td>
+    		</tr>
+    	</tbody>
+    </table>
+    
+    -->
 
     </section>
     <!-- /.content -->
