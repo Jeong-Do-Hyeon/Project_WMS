@@ -44,9 +44,9 @@ desired effect
   		innerHtml += '	<td class="text-center">'+trCnt+'</td>';
   		innerHtml += '	<td class="text-center"></td>';
   		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '	<td class="text-center"><input type="text" name="supply1" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="date"" name="impdate" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="text" name="note" style="width:100%; border:0;"></td>';
   		innerHtml += '</tr>';
   		
   		$('#impTable').append(innerHtml);
@@ -59,9 +59,19 @@ desired effect
   
   </script>
   <style>
+  	
+  	/* table style */
+  
   	table, th, td {
-  	border: 0.5px solid black;
+  	border: 1px solid gray;
 	}
+	
+	/* input text style */
+	
+	input:focus, textarea:focus{     
+	outline: none; 
+	}
+	
   </style>
   
   

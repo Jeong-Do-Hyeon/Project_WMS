@@ -45,13 +45,13 @@ desired effect
   		innerHtml += '	<td class="text-center">'+trCnt+'</td>';
   		innerHtml += '	<td class="text-center"></td>';
   		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '	<td class="text-center"><input type="text" name="expcomname" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="text" name="expcomperson" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="text" name="expmethod" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="text" name="expaddr" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="text" name="telnumber" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="date" name="expdate" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="text" name="note" style="width:100%; border:0;"></td>';
   		innerHtml += '</tr>';
   		
   		$('#expTable').append(innerHtml);
@@ -65,9 +65,19 @@ desired effect
   </script>
 
   <style>
+  	
+  	/* table style */
+  
   	table, th, td {
-  	border: 0.5px solid black;
+  	border: 1px solid gray;
 	}
+	
+	/* input text style */
+	
+	input:focus, textarea:focus{     
+	outline: none; 
+	}
+	
   </style>
   
   <!-- Left side column. contains the logo and sidebar -->
