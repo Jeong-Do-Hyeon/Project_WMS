@@ -35,12 +35,14 @@ desired effect
 
   <!-- Main Header -->
   <%@include file="/WEB-INF/views/include/header.jsp" %>
+  
+  <!-- 테이블 행 추가 -->
   <script>
   	function rowAdd(){
   		var trCnt = $('#impTable tr').length;
   		var innerHtml = "";
-  		innerHtml += '<tr style="font-size: 12px; font-weight= 600;">';
-  		innerHtml += '	<td class="text-center"><input type="checkbox" name="check"></td>';
+  		innerHtml += '<tr style="font-size: 12px; font-weight= 600;" id="'+trCnt+'">';
+  		innerHtml += '	<td class="text-center"><input type="checkbox" name="check" value="'+trCnt+'"></td>';
   		innerHtml += '	<td class="text-center">'+trCnt+'</td>';
   		innerHtml += '	<td class="text-center"></td>';
   		innerHtml += '	<td class="text-center"></td>';
@@ -52,12 +54,19 @@ desired effect
   		$('#impTable').append(innerHtml);
   	}
   </script>
+  
+  <!-- 체크박스 전체선택 -->
   <script>
-  	function rowDelete(){
-  		$('#impTable').remove();
-  	}
+  function selectAll(selectAll){
+	  const checkboxes = document.getElementsByName('check');
+  	  checkboxes.forEach((check)=>{
+  		  check.checked = selectAll.checked;
+  	  })
+  }
+  
   
   </script>
+  
   <style>
   	
   	/* table style */
@@ -95,7 +104,7 @@ desired effect
     <table id="impTable" class="table">
     	<thead>
     		<tr class="menu">
-    			<td class="text-center"><strong><input type="checkbox" name="check"></strong></td>
+    			<td class="text-center"><strong><input type="checkbox" name="check" onclick='selectAll(this)'></strong></td>
     			<td class="text-center"><strong>No.</strong></td>
     			<td class="text-center"><strong>입고상태</strong></td>
     			<td class="text-center"><strong>입고번호</strong></td>
