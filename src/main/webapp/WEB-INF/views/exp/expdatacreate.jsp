@@ -36,7 +36,7 @@ desired effect
   <!-- Main Header -->
   <%@include file="/WEB-INF/views/include/header.jsp" %>
   
-  <!-- 테이블 행 추가 -->
+  <!-- 테이블 행 추가 기능 -->
   <script>
   	function rowAdd(){
   		var trCnt = $('#expTable tr').length;
@@ -59,7 +59,7 @@ desired effect
   	}
   </script>
   
-  <!-- 체크박스 전체선택 -->
+  <!-- 체크박스 전체선택 기능 -->
   <script>
   function selectAll(selectAll){
 	  const checkboxes = document.getElementsByName('check');
