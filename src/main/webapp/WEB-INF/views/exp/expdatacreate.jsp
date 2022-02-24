@@ -70,6 +70,22 @@ desired effect
   
   
   </script>
+  
+  <!-- 체크박스 선택 시 삭제 기능 -->
+  <script>
+	function rowDel(){
+		 tableData = document.getElementById('expTable');
+		 for(var i=1; i<tableData.rows.length; i++){
+			 var check = tableData.rows[i].cells[0].childNodes[0].checked;
+			 
+			 if(check){
+				 tableData.deleteRow(i);
+				 i--;
+			 }
+		 }
+	
+	}
+  </script>
   <style>
   	
   	/* table style */
@@ -99,7 +115,7 @@ desired effect
     <button id="add" onclick="rowAdd();">라인추가</button>
     <button id="save">신규등록</button>
     <button id="modify">수정</button>
-    <button id="delete">삭제</button>
+    <button id="delete" onclick="rowDel()">삭제</button>
     <button id="refresh" onclick="window.location.reload()">새로고침</button>
     
     <table id="expTable" class="table">
