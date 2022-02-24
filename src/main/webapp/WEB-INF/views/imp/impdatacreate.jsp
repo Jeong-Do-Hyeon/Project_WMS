@@ -66,6 +66,9 @@ desired effect
   
   
   </script>
+  
+  
+  <!-- 체크박스 선택 시 삭제 기능 -->
   <script>
 	function rowDel(){
 		 tableData = document.getElementById('impTable');
