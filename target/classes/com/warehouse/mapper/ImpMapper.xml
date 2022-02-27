@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.ImpMapper">
+
+<insert id="checkAdd">
+
+	INSERT INTO imp (impnum, supply1, impdate, note) VALUES (impnum.nextval, #{supply1}, #{impdate}, #{note}) 
+	
+</insert>
+
+<select id="getList" resultType="com.warehouse.domain.ImpVO">
+
+	SELECT impnum, supply1, impdate, note FROM imp
+
+</select>
+
+<delete id="checkDel">
+
+	DELETE FROM imp WHERE impnum = #{impnum}
+
+</delete>
+
+<update id="checkModify">
+
+	UPDATE imp SET
+		supply1 = #{supply1}, 
+	    impdate = #{impdate}, 
+	    note = #{note}
+	WHERE impnum = #{impnum} 
+
+</update>
+
+</mapper>

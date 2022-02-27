@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.ExpMapper">
+
+<insert id="checkAdd">
+
+	INSERT INTO exp
+	
+	(expnum,
+	 expcomname,
+	 expcomperson,
+	 expaddr,
+	 telnumber,
+	 expmethod,
+	 expdate,
+	 note)
+	 
+	 VALUES
+	 
+	 (expnum.nextval,
+	  #{expcomname},
+	  #{expcomperson},
+	  #{expaddr},
+	  #{telnumber},
+	  #{expmethod},
+	  #{expdate},
+	  #{note})
+
+</insert>
+
+<select id="getList" resultType="com.warehouse.domain.ExpVO">
+
+	SELECT
+	
+	 expnum,
+	 expcomname,
+	 expcomperson,
+	 expaddr,
+	 telnumber,
+	 expmethod,
+	 expdate,
+	 note
+	 
+	 FROM exp
+
+
+</select>
+
+<delete id="checkDel">
+
+	DELECT FROM exp WHERE expnum = #{expnum}
+
+</delete>
+
+<update id="checkModify">
+
+	UPDATE exp SET
+		expcomname = #{expcomname},
+		expcomperson = #{expcomperson},
+		expaddr = #{expaddr},
+		telnumber = #{telnumber},
+		expmethod = #{expmethod},
+		expdate = #{expdate},
+		note = #{note}
+	
+	WHERE expnum = #{expnum}
+
+
+</update>
+
+	
+
+
+
+
+
+</mapper>
