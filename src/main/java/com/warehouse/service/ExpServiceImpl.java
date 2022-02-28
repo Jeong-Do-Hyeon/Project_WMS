@@ -31,8 +31,15 @@ public class ExpServiceImpl implements ExpService {
 	}
 
 	@Override
-	public void checkDel
-	(String expcomname,
+	public void checkDel(Integer expnum) {
+		// TODO Auto-generated method stub
+		mapper.checkDel(expnum);
+	}
+	
+	@Override
+	public void checkModify
+	(Integer expnum,
+	 String expcomname,
 	 String expcomperson,
 	 String expaddr,
 	 String telnumber,
@@ -40,26 +47,13 @@ public class ExpServiceImpl implements ExpService {
 	 String expdate,
 	 String note) {
 		// TODO Auto-generated method stub
-		mapper.checkDel(expcomname, expcomperson, expaddr, telnumber, expmethod, expdate, note);
+		mapper.checkModify(expnum, expcomname, expcomperson, expaddr, telnumber, expmethod, expdate, note);
 	}
 	
 	@Override
 	public List<ExpVO> getList() {
 		// TODO Auto-generated method stub
 		return mapper.getList();
-	}
-
-	@Override
-	public void checkModify
-	(String expcomname,
-	 String expcomperson,
-	 String expaddr,
-	 String telnumber,
-	 String expmethod,
-	 String expdate,
-	 String note) {
-		// TODO Auto-generated method stub
-		mapper.checkModify(expcomname, expcomperson, expaddr, telnumber, expmethod, expdate, note);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.warehouse.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -37,19 +38,17 @@ public class ImpController {
 	@ResponseBody
 	@PostMapping("/checkDel")
 	public ResponseEntity<String> checkDel(
-			@RequestParam("supply1Arr[]") List<String> supply1Arr,
-			@RequestParam("impdateArr[]") List<String>	impdateArr,
-			@RequestParam("noteArr[]") List<String> noteArr){
+			@RequestParam("impnumArr[]") List<Integer> impnumArr){
 		
-		log.info(supply1Arr);
+		log.info(impnumArr);
 		
 		ResponseEntity<String> entity = null;
 		
 		try {
 			
-			for(int i=0; i<supply1Arr.size(); i++) {
+			for(int i=0; i<impnumArr.size(); i++) {
 				
-			service.checkDel(supply1Arr.get(i), impdateArr.get(i), noteArr.get(i));
+			service.checkDel(impnumArr.get(i));
 			
 			}
 			
@@ -70,7 +69,7 @@ public class ImpController {
 	@PostMapping("/checkAdd")
 	public ResponseEntity<String> checkAdd(
 			@RequestParam("supply1Arr[]") List<String> supply1Arr,
-			@RequestParam("impdateArr[]") List<String>	impdateArr,
+			@RequestParam("impdateArr[]") List<String> impdateArr,
 			@RequestParam("noteArr[]") List<String> noteArr){
 		
 		log.info(supply1Arr);
@@ -100,9 +99,12 @@ public class ImpController {
 	@ResponseBody
 	@PostMapping("/checkModify")
 	public ResponseEntity<String> checkModify(
+			@RequestParam("impnumArr[]") List<Integer> impnumArr,
 			@RequestParam("supply1Arr[]") List<String> supply1Arr,
-			@RequestParam("impdateArr[]") List<String>	impdateArr,
+			@RequestParam("impdateArr[]") List<String> impdateArr,
 			@RequestParam("noteArr[]") List<String> noteArr){
+		
+		log.info(impdateArr);
 		
 		log.info(supply1Arr);
 		
@@ -112,7 +114,7 @@ public class ImpController {
 			
 			for(int i=0; i<supply1Arr.size(); i++) {
 				
-			service.checkModify(supply1Arr.get(i), impdateArr.get(i), noteArr.get(i));
+			service.checkModify(impnumArr.get(i), supply1Arr.get(i), impdateArr.get(i), noteArr.get(i));
 			
 			}
 			

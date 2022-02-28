@@ -48,7 +48,7 @@
 
 <delete id="checkDel">
 
-	DELECT FROM exp WHERE expnum = #{expnum}
+	DELETE FROM exp WHERE expnum = #{expnum}
 
 </delete>
 

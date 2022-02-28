@@ -1,13 +1,15 @@
 package com.warehouse.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
 public class ImpVO {
 	
-	private int impnum;
+	private Integer impnum;
 	private String supply1;
-	private String impdate;
+	private Date impdate;
 	private String note;
 
 }

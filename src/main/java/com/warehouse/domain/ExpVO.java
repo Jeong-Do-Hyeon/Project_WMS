@@ -1,5 +1,7 @@
 package com.warehouse.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -11,7 +13,7 @@ public class ExpVO {
 	private String expaddr;
 	private String telnumber;
 	private String expmethod;
-	private String expdate;
+	private Date expdate;
 	private String note;
 	
 }

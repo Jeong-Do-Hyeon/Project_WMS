@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -46,13 +47,13 @@ desired effect
   		innerHtml += '	<td class="text-center"><input type="checkbox" id="check" name="check" class="check"></td>';
   		innerHtml += '	<td class="text-center">'+trCnt+'</td>';
   		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '	<td class="text-center"><input type="hidden" id="expnum" name="expnum" style="width:100%; border:0;"/></td>';
   		innerHtml += '	<td class="text-center"><input type="text" name="expcomname" style="width:100%; border:0;"></td>';
   		innerHtml += '	<td class="text-center"><input type="text" name="expcomperson" style="width:100%; border:0;"></td>';
   		innerHtml += '	<td class="text-center"><input type="text" name="expmethod" style="width:100%; border:0;"></td>';
   		innerHtml += '	<td class="text-center"><input type="text" name="expaddr" style="width:100%; border:0;"></td>';
   		innerHtml += '	<td class="text-center"><input type="text" name="telnumber" style="width:100%; border:0;"></td>';
-  		innerHtml += '	<td class="text-center"><input type="date" name="expdate" style="width:100%; border:0;"></td>';
+  		innerHtml += '	<td class="text-center"><input type="date" pattern="\d{4}-\d{2}-\d{2}" name="expdate" style="width:100%; border:0;"></td>';
   		innerHtml += '	<td class="text-center"><input type="text" name="note" style="width:100%; border:0;"></td>';
   		innerHtml += '</tr>';
   		
@@ -134,17 +135,10 @@ desired effect
   				let expdate = (tr.find("[name=expdate]").val());
   				let note = (tr.find("[name=note]").val());
   				
-  	  			
-  	  		
-  			// $(".check:checked").each(function(){
+  				if(note == ""){
+					note = " ";
+				}
   				
-  			//	let tr = $(this).parent().parent();
-  				
-  				
-  			//	let supply1 = $(this).val();
-  	  		//	let impdate = $(this).next().val();
-  	  		//	let note = $(this).next().next().val();
-  	  		
   	  			expcomnameArr.push(expcomname);
   				expcompersonArr.push(expcomperson);
   				expaddrArr.push(expaddr);
@@ -153,8 +147,6 @@ desired effect
   				expdateArr.push(expdate);
   				noteArr.push(note);
 
-  	  			
-  	  			return;
   			
   			});
   			
@@ -194,59 +186,18 @@ desired effect
   			
   			if(!isDel) return;
   			
-  			let expcomnameArr = []
-			let expcompersonArr = []
-			let expaddrArr = []
-			let telnumberArr = []
-			let expmethodArr = []
-			let expdateArr = []
-			let noteArr = []
+  			let expnumArr = []
   	
   			
   			$(".check:checked").each(function(){
 				let tr = $(this).parent().parent();
-				//console.log(tr.find("#supply1").val());
-				//console.log(tr.find("#impdate").val());
-				//console.log(tr.find("#note").val());
-				
-				//let supply1 = tr.find("#supply1").val();
-				//let impdate = tr.find("#impdate").val();
-				//let note = tr.find("#note").val();
   				
-  			
+  				let expnum = (tr.find("[name=d_expnum]").val());
   				
-  				//let tr = $(this).parent().parent();
-  				//console.log(tr.find("[name=supply1]").val());
-  				
-  				let expcomname = (tr.find("[name=expcomname]").val());
-  				let expcomperson = (tr.find("[name=expcomperson]").val());
-  				let expaddr = (tr.find("[name=expaddr]").val());
-  				let telnumber = (tr.find("[name=telnumber]").val());
-  				let expmethod = (tr.find("[name=expmethod]").val());
-  				let expdate = (tr.find("[name=expdate]").val());
-  				let note = (tr.find("[name=note]").val());
-  				
+  	  			console.log(expnum);
+
+  				expnumArr.push(expnum);
   	  			
-  	  		
-  			// $(".check:checked").each(function(){
-  				
-  			//	let tr = $(this).parent().parent();
-  				
-  				
-  			//	let supply1 = $(this).val();
-  	  		//	let impdate = $(this).next().val();
-  	  		//	let note = $(this).next().next().val();
-  	  		
-  	  			expcomnameArr.push(expcomname);
-  				expcompersonArr.push(expcomperson);
-  				expaddrArr.push(expaddr);
-  				telnumberArr.push(telnumber);
-  				expmethodArr.push(expmethod);
-  				expdateArr.push(expdate);
-  				noteArr.push(note);
-  	  			
-  	  			return;
-  			
   			});
   			
   			$.ajax({
@@ -254,13 +205,7 @@ desired effect
   				type: 'post',
   				dataType : 'text',
   				data: {
-  					expcomnameArr : expcomnameArr,
-  					expcompersonArr : expcompersonArr,
-  					expaddrArr : expaddrArr,
-  					telnumberArr : telnumberArr,
-  					expmethodArr : expmethodArr,
-  					expdateArr : expdateArr,
-  					noteArr : noteArr				
+  					expnumArr : expnumArr			
   				},
   				success: function(data){
   					if(data == "success"){
@@ -285,6 +230,7 @@ desired effect
   			
   			if(!isModify) return;
   			
+  			let expnumArr = []
   			let expcomnameArr = []
 			let expcompersonArr = []
 			let expaddrArr = []
@@ -310,24 +256,21 @@ desired effect
   				//console.log(tr.find("[name=supply1]").val());
   				
   				
-  				let expcomname = (tr.find("[name=expcomname]").val());
-  				let expcomperson = (tr.find("[name=expcomperson]").val());
-  				let expaddr = (tr.find("[name=expaddr]").val());
-  				let telnumber = (tr.find("[name=telnumber]").val());
-  				let expmethod = (tr.find("[name=expmethod]").val());
-  				let expdate = (tr.find("[name=expdate]").val());
-  				let note = (tr.find("[name=note]").val());
+  				let expnum = (tr.find("[name=d_expnum]").val());
+  				let expcomname = (tr.find("[name=d_expcomname]").val());
+  				let expcomperson = (tr.find("[name=d_expcomperson]").val());
+  				let expaddr = (tr.find("[name=d_expaddr]").val());
+  				let telnumber = (tr.find("[name=d_telnumber]").val());
+  				let expmethod = (tr.find("[name=d_expmethod]").val());
+  				let expdate = (tr.find("[name=d_expdate]").val());
+  				let note = (tr.find("[name=d_note]").val());
   	  			
   	  		
-  			// $(".check:checked").each(function(){
-  				
-  			//	let tr = $(this).parent().parent();
-  				
-  				
-  			//	let supply1 = $(this).val();
-  	  		//	let impdate = $(this).next().val();
-  	  		//	let note = $(this).next().next().val();
-  	  		
+  				if(note == ""){
+					note = " ";
+				}
+  	  			
+  	  			expnumArr.push(expnum);
   	  			expcomnameArr.push(expcomname);
   				expcompersonArr.push(expcomperson);
   				expaddrArr.push(expaddr);
@@ -336,7 +279,7 @@ desired effect
   				expdateArr.push(expdate);
   				noteArr.push(note);
   	  			
-  	  			return;
+  	  			
   			
   			});
   			
@@ -346,6 +289,7 @@ desired effect
   				type: 'post',
   				dataType : 'text',
   				data: {
+  					expnumArr : expnumArr,
   					expcomnameArr : expcomnameArr,
   					expcompersonArr : expcompersonArr,
   					expaddrArr : expaddrArr,
@@ -435,7 +379,7 @@ desired effect
     			<td>
     			</td>
     			<td>
-    				<input type="text" name="d_expnum" value='<c:out value="${ExpVO.expnum}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_expnum" value='<c:out value="${ExpVO.expnum}"></c:out>' style="width:100%; border:0;" readonly>
     			</td>
     			<td>
     				<input type="text" name="d_expcomname" value='<c:out value="${ExpVO.expcomname}"></c:out>' style="width:100%; border:0;">
@@ -453,7 +397,7 @@ desired effect
     				<input type="text" name="d_telnumber" value='<c:out value="${ExpVO.telnumber}"></c:out>' style="width:100%; border:0;">
     			</td>
     			<td>
-    				<input type="text" name="d_expdate" value='<c:out value="${ExpVO.expdate}"></c:out>' style="width:100%; border:0;">
+    				<input type="date" name="d_expdate" value='<fmt:formatDate value="${ExpVO.expdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0;">
     			</td>
     			<td>
     				<input type="text" name="d_note" value='<c:out value="${ExpVO.note}"></c:out>' style="width:100%; border:0;">

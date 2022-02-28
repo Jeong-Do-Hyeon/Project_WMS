@@ -1,5 +1,6 @@
 package com.warehouse.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class ImpServiceImpl implements ImpService {
 	}
 	
 	@Override
-	public void checkDel(String supply1, String impdate, String note) {
+	public void checkDel(Integer impnum) {
 		// TODO Auto-generated method stub
-		mapper.checkDel(supply1, impdate, note);
+		mapper.checkDel(impnum);
 	}
 
 	@Override
@@ -36,11 +37,11 @@ public class ImpServiceImpl implements ImpService {
 	}
 
 	@Override
-	public void checkModify(String supply1, String impdate, String note) {
+	public void checkModify(Integer impnum, String supply1, String impdate, String note) {
 		// TODO Auto-generated method stub
-		mapper.checkModify(supply1, impdate, note);
-		
+		mapper.checkModify(impnum, supply1, impdate, note);
 	}
+
 
 
 }

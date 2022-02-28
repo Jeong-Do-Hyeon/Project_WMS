@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -47,16 +48,15 @@ desired effect
   		innerHtml += '	<td class="text-center"><input type="checkbox" id="check" name="check" class="check"></td>';
   		innerHtml += '	<td class="text-center" name="new">New</td>';
   		innerHtml += '	<td class="text-center"></td>';
-  		innerHtml += '	<td class="text-center"></td>';
+  		innerHtml += '	<td class="text-center"><input type="hidden" id="impnum" name="impnum" style="width:100%; border:0;"/></td>';
   		innerHtml += '	<td class="text-center"><input type="text" id="supply1" name="supply1" style="width:100%; border:0;"/></td>';
-  		innerHtml += '	<td class="text-center"><input type="date" id="impdate" name="impdate" style="width:100%; border:0;"/></td>';
+  		innerHtml += '	<td class="text-center"><input type="date" pattern="\d{4}-\d{2}-\d{2}" id="impdate" name="impdate" style="width:100%; border:0;"/></td>';
   		innerHtml += '	<td class="text-center"><input type="text" id="note" name="note" style="width:100%; border:0;"/></td>';
   		
   		$('#impTable').append(innerHtml);
   	}
   </script>
   
-   <!-- 체크박스 선택 시 삭제 기능 -->
   <script>
   
   	$(document).ready(function(){
@@ -124,20 +124,14 @@ desired effect
   				
   	  			
   	  		
-  			// $(".check:checked").each(function(){
-  				
-  			//	let tr = $(this).parent().parent();
-  				
-  				
-  			//	let supply1 = $(this).val();
-  	  		//	let impdate = $(this).next().val();
-  	  		//	let note = $(this).next().next().val();
+				if(note == ""){
+					note = "1";
+				}
   	  		
   	  			supply1Arr.push(supply1);
   	  			impdateArr.push(impdate);
   	  			noteArr.push(note);
   	  			
-  	  			return;
   			
   			});
   			
@@ -173,46 +167,17 @@ desired effect
   			
   			if(!isDel) return;
   			
-  			let supply1Arr = []
-  			let impdateArr = []
-  			let noteArr = []
+  			let impnumArr = []
   	
   			
   			$(".check:checked").each(function(){
 				let tr = $(this).parent().parent();
-				//console.log(tr.find("#supply1").val());
-				//console.log(tr.find("#impdate").val());
-				//console.log(tr.find("#note").val());
-				
-				//let supply1 = tr.find("#supply1").val();
-				//let impdate = tr.find("#impdate").val();
-				//let note = tr.find("#note").val();
+
+  				let impnum  = (tr.find("[name=d_impnum]").val());
   				
-  			
+  				console.log(impnum);
   				
-  				//let tr = $(this).parent().parent();
-  				//console.log(tr.find("[name=supply1]").val());
-  				
-  				let supply1 = (tr.find("[name=supply1]").val());
-  				let impdate = (tr.find("[name=impdate]").val());
-  				let note = (tr.find("[name=note]").val());
-  				
-  	  			
-  	  		
-  			// $(".check:checked").each(function(){
-  				
-  			//	let tr = $(this).parent().parent();
-  				
-  				
-  			//	let supply1 = $(this).val();
-  	  		//	let impdate = $(this).next().val();
-  	  		//	let note = $(this).next().next().val();
-  	  		
-  	  			supply1Arr.push(supply1);
-  	  			impdateArr.push(impdate);
-  	  			noteArr.push(note);
-  	  			
-  	  			return;
+  	  			impnumArr.push(impnum);
   			
   			});
   			
@@ -221,9 +186,7 @@ desired effect
   				type: 'post',
   				dataType : 'text',
   				data: {
-  					supply1Arr : supply1Arr,
-  					impdateArr : impdateArr,
-  					noteArr : noteArr
+  					impnumArr : impnumArr
   				},
   				success: function(data){
   					if(data == "success"){
@@ -247,7 +210,7 @@ desired effect
 			let isModify = confirm("선택한 주문을 수정하시겠습니까?");
   			
   			if(!isModify) return;
-  			
+  			let impnumArr = []
   			let supply1Arr = []
   			let impdateArr = []
   			let noteArr = []
@@ -268,10 +231,11 @@ desired effect
   				//let tr = $(this).parent().parent();
   				//console.log(tr.find("[name=supply1]").val());
   				
-  				let supply1 = (tr.find("[name=supply1]").val());
-  				let impdate = (tr.find("[name=impdate]").val());
-  				let note = (tr.find("[name=note]").val());
-  				
+  				let impnum = (tr.find("[name=d_impnum]").val());
+  				let supply1 = (tr.find("[name=d_supply1]").val());
+  				let impdate = (tr.find("[name=d_impdate]").val());
+  				let note = (tr.find("[name=d_note]").val());
+  			
   	  			
   	  		
   			// $(".check:checked").each(function(){
@@ -282,13 +246,12 @@ desired effect
   			//	let supply1 = $(this).val();
   	  		//	let impdate = $(this).next().val();
   	  		//	let note = $(this).next().next().val();
-  	  		
+
+  	  			impnumArr.push(impnum);
   	  			supply1Arr.push(supply1);
   	  			impdateArr.push(impdate);
   	  			noteArr.push(note);
   	  			
-  	  			return;
-  			
   			});
   			
   			
@@ -297,6 +260,7 @@ desired effect
   				type: 'post',
   				dataType : 'text',
   				data: {
+  					impnumArr : impnumArr,
   					supply1Arr : supply1Arr,
   					impdateArr : impdateArr,
   					noteArr : noteArr
@@ -378,13 +342,13 @@ desired effect
     			<td>
     			</td>
     			<td>
-    				<input type="text" name="d_impnum" value='<c:out value="${ImpVO.impnum}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_impnum" value='<c:out value="${ImpVO.impnum}"></c:out>' style="width:100%; border:0;" readonly>
     			</td>
     			<td class="text-center">
     				<input type="text" name="d_supply1" value='<c:out value="${ImpVO.supply1}"></c:out>' style="width:100%; border:0;">
     			</td>
-    			<td class="text-center">
-    				<input type="text" name="d_impdate" pattern="yyyy-MM-dd" value='<c:out value="${ImpVO.impdate}"></c:out>' style="width:100%; border:0;">
+    			<td class="text-center"> 
+    				<input type="date" name="d_impdate" value='<fmt:formatDate value="${ImpVO.impdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0;">
     			</td>
     			<td class="text-center">
     				<input type="text" name="d_note" value='<c:out value="${ImpVO.note}"></c:out>' style="width:100%; border:0;">

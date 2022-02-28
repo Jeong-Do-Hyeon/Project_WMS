@@ -38,31 +38,18 @@ public class ExpController {
 	@ResponseBody
 	@PostMapping("/checkDel")
 	public ResponseEntity<String> checkDel(
-			@RequestParam("expcomnameArr[]") List<String> expcomnameArr,
-			@RequestParam("expcompersonArr[]") List<String>	expcompersonArr,
-			@RequestParam("expaddrArr[]") List<String> expaddrArr,
-			@RequestParam("telnumberArr[]") List<String> telnumberArr,
-			@RequestParam("expmethodArr[]") List<String> expmethodArr,
-			@RequestParam("expdateArr[]") List<String> expdateArr,
-			@RequestParam("noteArr[]") List<String> noteArr
-			){
+			@RequestParam("expnumArr[]") List<Integer> expnumArr){
 		
-		// log.info("가나다라");
+		log.info(expnumArr);
 		
 		ResponseEntity<String> entity = null;
 		
 		try {
 			
-			for(int i=0; i<expcomnameArr.size(); i++) {
+			for(int i=0; i<expnumArr.size(); i++) {
 				
-			service.checkDel
-			(expcomnameArr.get(i),
-			 expcompersonArr.get(i),
-			 expaddrArr.get(i),
-			 telnumberArr.get(i),
-			 expmethodArr.get(i),
-			 expdateArr.get(i),
-			 noteArr.get(i));			
+			service.checkDel(expnumArr.get(i));
+			
 			}
 			
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
@@ -122,6 +109,7 @@ public class ExpController {
 	@ResponseBody
 	@PostMapping("/checkModify")
 	public ResponseEntity<String> checkModify(
+			@RequestParam("expnumArr[]") List<Integer> expnumArr,
 			@RequestParam("expcomnameArr[]") List<String> expcomnameArr,
 			@RequestParam("expcompersonArr[]") List<String>	expcompersonArr,
 			@RequestParam("expaddrArr[]") List<String> expaddrArr,
@@ -140,7 +128,8 @@ public class ExpController {
 			for(int i=0; i<expcomnameArr.size(); i++) {
 				
 			service.checkModify
-			(expcomnameArr.get(i),
+			(expnumArr.get(i),
+			 expcomnameArr.get(i),
 			 expcompersonArr.get(i),
 			 expaddrArr.get(i),
 			 telnumberArr.get(i),

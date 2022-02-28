@@ -17,17 +17,11 @@ public interface ExpService {
 	 @Param("expdate")String expdate,
 	 @Param("note")String note);
 	
-	public void checkDel
-	(@Param("expcomname")String expcomname, 
-	 @Param("expcomperson")String expcomperson,
-	 @Param("expaddr")String expaddr,
-	 @Param("telnumber")String telnumber,
-	 @Param("expmethod")String expmethod,
-	 @Param("expdate")String expdate,
-	 @Param("note")String note);
+	public void checkDel(Integer expnum);
 	
 	public void checkModify
-	(@Param("expcomname")String expcomname, 
+	(@Param("expnum")Integer expnum,
+	 @Param("expcomname")String expcomname, 
 	 @Param("expcomperson")String expcomperson,
 	 @Param("expaddr")String expaddr,
 	 @Param("telnumber")String telnumber,
