@@ -88,6 +88,21 @@ desired effect
   			
   		});
   		
+  		let impnum;
+  		
+  		// 클릭시 하위메뉴 보여주는 구문
+  		$("#impTable tr").on("click","input[name=d_impnum]", function(){
+  			
+  			console.log($(this).val());
+  			
+  			impnum = $(this).val();
+  			
+  			$("#impsubdata").load("/subdata/subimp?impnum="+$(this).val());
+  			
+  		});
+  		
+  		
+  		
   		$("#save").on("click", function(){
   			if($(".check:checked").length ==0){
   				alert("등록할 주문을 선택하세요")
@@ -125,7 +140,7 @@ desired effect
   	  			
   	  		
 				if(note == ""){
-					note = "1";
+					note = " ";
 				}
   	  		
   	  			supply1Arr.push(supply1);
@@ -342,45 +357,31 @@ desired effect
     			<td>
     			</td>
     			<td>
-    				<input type="text" name="d_impnum" value='<c:out value="${ImpVO.impnum}"></c:out>' style="width:100%; border:0;" readonly>
+    				<input type="text" name="d_impnum" value='<c:out value="${ImpVO.impnum}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
     			<td class="text-center">
-    				<input type="text" name="d_supply1" value='<c:out value="${ImpVO.supply1}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_supply1" value='<c:out value="${ImpVO.supply1}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			<td class="text-center"> 
-    				<input type="date" name="d_impdate" value='<fmt:formatDate value="${ImpVO.impdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0;">
+    				<input type="date" name="d_impdate" value='<fmt:formatDate value="${ImpVO.impdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0; text-align:center;">
     			</td>
     			<td class="text-center">
-    				<input type="text" name="d_note" value='<c:out value="${ImpVO.note}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_note" value='<c:out value="${ImpVO.note}"></c:out>' style="width:100%; border:0; text-align:center;">
+    				<input type="hidden" name="d_impnum" value='<c:out value="${ImpVO.impnum}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     		</tr>
     		</c:forEach>
     	</tbody>
     </table>
-    
-    <!-- 
-      	<tbody id="contents">
-    		<tr style="font-size: 12px; font-weight: 600;">
-    			<td class="text-center"><strong></strong></td>
-    			<td class="text-center"><strong>No.</strong></td>
-    			<td class="text-center"><strong>입고상태</strong></td>
-    			<td class="text-center"><strong>입고번호</strong></td>
-    			<td class="text-center"><strong>공급처</strong></td>
-    			<td class="text-center"><strong>입고일자</strong></td>
-    			<td class="text-center"><strong>비고</strong></td>
-    		</tr>
-    	</tbody>
-    </table>
-    
-    -->
-
-    </section>
-    <!-- /.content -->
+    </section>  
   </div>
-  <!-- /.content-wrapper -->
-
+  
+  <div id="impsubdata">
+  	
+  </div>
+  
+  
   <!-- Main Footer (기타 footer태그밑에 소스포함)-->
-  <%@include file="/WEB-INF/views/include/footer.jsp" %>
 </div>
 <!-- ./wrapper -->
 

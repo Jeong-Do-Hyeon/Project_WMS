@@ -93,6 +93,19 @@ desired effect
   			
   		});
   		
+  	// 클릭시 하위메뉴 보여주는 구문
+  		$("#expTable tr").on("click","input[name=d_expnum]", function(){
+  			
+  			console.log($(this).val());
+  			
+  			impnum = $(this).val();
+  			
+  			$("#expsubdata").load("/expsubdata/subexp?expnum="+$(this).val());
+  			
+  		});
+  		
+  		
+  		
   		$("#save").on("click", function(){
   			if($(".check:checked").length ==0){
   				alert("등록할 주문을 선택하세요")
@@ -364,7 +377,7 @@ desired effect
     			<td class="text-center"><strong>출고수단</strong></td>
     			<td class="text-center"><strong>주소</strong></td>
 				<td class="text-center"><strong>전화번호</strong></td>
-    			<td class="text-center"><strong>입고일자</strong></td>
+    			<td class="text-center"><strong>출고일자</strong></td>
     			<td class="text-center"><strong>비고</strong></td>
     		</tr>
     	</thead>
@@ -379,28 +392,28 @@ desired effect
     			<td>
     			</td>
     			<td>
-    				<input type="text" name="d_expnum" value='<c:out value="${ExpVO.expnum}"></c:out>' style="width:100%; border:0;" readonly>
+    				<input type="text" name="d_expnum" value='<c:out value="${ExpVO.expnum}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>
     			</td>
     			<td>
-    				<input type="text" name="d_expcomname" value='<c:out value="${ExpVO.expcomname}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_expcomname" value='<c:out value="${ExpVO.expcomname}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			<td>
-    				<input type="text" name="d_expcomperson" value='<c:out value="${ExpVO.expcomperson}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_expcomperson" value='<c:out value="${ExpVO.expcomperson}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			<td>
-    				<input type="text" name="d_expmethod" value='<c:out value="${ExpVO.expmethod}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_expmethod" value='<c:out value="${ExpVO.expmethod}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			<td>
-    				<input type="text" name="d_expaddr" value='<c:out value="${ExpVO.expaddr}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_expaddr" value='<c:out value="${ExpVO.expaddr}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			<td>
-    				<input type="text" name="d_telnumber" value='<c:out value="${ExpVO.telnumber}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_telnumber" value='<c:out value="${ExpVO.telnumber}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			<td>
-    				<input type="date" name="d_expdate" value='<fmt:formatDate value="${ExpVO.expdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0;">
+    				<input type="date" name="d_expdate" value='<fmt:formatDate value="${ExpVO.expdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0; text-align:center;">
     			</td>
     			<td>
-    				<input type="text" name="d_note" value='<c:out value="${ExpVO.note}"></c:out>' style="width:100%; border:0;">
+    				<input type="text" name="d_note" value='<c:out value="${ExpVO.note}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			</tr>
     		</c:forEach>
@@ -408,6 +421,12 @@ desired effect
     </table>
 
     </section>
+    
+    </div>
+  
+  <div id="expsubdata">
+  	
+  </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -150,20 +150,14 @@ public class ExpController {
 		return entity;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	@GetMapping("/exppickchoice")
-	public void exppickchoice() {
+	public void exppickchoice(Model model) {
+		List<ExpVO> list = service.getList();
+		
+		model.addAttribute("exppickchoice", list);
+		
 		
 	}
 	
