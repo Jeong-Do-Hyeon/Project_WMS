@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.InventoryMapper">
+
+<select id="getList" resultType="com.warehouse.domain.InventoryVO">
+
+	SELECT
+	
+	 impitemname,
+	 itemname,
+	 impdepot,
+	 implocation,
+	 quantity,
+	 impdate
+	 
+	 FROM inventory
+
+
+</select>
+
+</mapper>

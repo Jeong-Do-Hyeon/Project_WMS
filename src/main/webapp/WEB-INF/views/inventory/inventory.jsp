@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -59,14 +60,36 @@ desired effect
     		<tr class="menu">
     			<td class="text-center"><strong>상품이름</strong></td>
     			<td class="text-center"><strong>판매이름</strong></td>
-    			<td class="text-center"><strong>공급처</strong></td>
-    			<td class="text-center"><strong>세부공급처</strong></td>
     			<td class="text-center"><strong>입고장소</strong></td>
     			<td class="text-center"><strong>입고위치</strong></td>
     			<td class="text-center"><strong>재고수량</strong></td>
     			<td class="text-center"><strong>입고일자</strong></td>
     		</tr>
     	</thead>
+    	<tbody>
+    	<c:forEach items="${inventory}" var="InventoryVO" varStatus="status">
+    		<tr class="data" style="font-size: 12px; font-weight= 600;">
+    			<td class="text-center">
+    				<input type="text" name="d_impitemname" value='<c:out value="${InventoryVO.impitemname}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    			</td>
+    			<td class="text-center">
+    				<input type="text" name="d_itemname" value='<c:out value="${InventoryVO.itemname}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    			</td>
+    			<td class="text-center">
+    				<input type="text" name="d_impdepot" value='<c:out value="${InventoryVO.impdepot}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    			</td>
+    			<td class="text-center"> 
+    				<input type="text" name="d_implocation" value='<c:out value="${InventoryVO.implocation}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    			</td>
+    			<td class="text-center">
+    				<input type="text" name="d_quantity" value='<c:out value="${InventoryVO.quantity}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    			</td>
+    			<td class="text-center">
+    				<input type="text" name="d_impdate" value='<c:out value="${InventoryVO.impdate}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    			</td>
+    		</tr>
+    	</c:forEach>
+    	</tbody>
     </table>
 	
 

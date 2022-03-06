@@ -75,18 +75,6 @@
   			
   			$(".subcheck:checked").each(function(){
 				let tr = $(this).parent().parent();
-				//console.log(tr.find("#supply1").val());
-				//console.log(tr.find("#expdate").val());
-				//console.log(tr.find("#note").val());
-				
-				//let supply1 = tr.find("#supply1").val();
-				//let expdate = tr.find("#expdate").val();
-				//let note = tr.find("#note").val();
-  				
-  			
-  				
-  				//let tr = $(this).parent().parent();
-  				//console.log(tr.find("[name=supply1]").val());
   				
   				let expnum = ${expnum};
   				let expitemname = (tr.find("[name=expitemname]").val());
