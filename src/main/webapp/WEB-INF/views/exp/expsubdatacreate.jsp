@@ -124,6 +124,104 @@
   			
   			})
   		})
+  		
+  		
+  		$("#subdelete").on("click", function(){
+  			if($(".subcheck:checked").length == 0){
+  				alert("삭제할 상품을 선택하세요")
+  				return;
+  			}
+  			
+  			let isDel = confirm("선택한 상품을 삭제하시겠습니까?")
+  			
+  			if(!isDel) return;
+  			
+  			let expitemnameArr = []
+  			
+  			$(".subcheck:checked").each(function(){
+  				
+  				let tr = $(this).parent().parent();
+  				
+  				let expitemname = (tr.find("[name=d_expitemname]").val());
+  				
+  				console.log(expitemname);
+  				
+  				expitemnameArr.push(expitemname)
+  					
+  			});
+  			
+  			$.ajax({
+  				url : "/expsubdata/checkDel",
+  				type : 'post',
+  				dataType : 'text',
+  				data:{
+  					expitemnameArr : expitemnameArr
+  				},
+  				success: function(data){
+  					if(data == "success"){
+  						alert("선택된 상품이 삭제되었습니다")
+  					}
+  				}
+  			
+  		})
+  		
+  		
+  		})
+  		
+  		$("#submodify").on("click",function(){
+  			if($(".subcheck:checked").length == 0){
+  				alert("수정할 상품을 선택하세요")
+  				return;;
+  			}
+  			
+  			let isModify = confirm("선택한 상품을 수정하시겠습니까?");
+  			
+  			if(!isModify) return;
+  			let expnumArr = []
+  			let expitemnameArr = []
+  			let itemnameArr = []
+  			let expquantityArr = []
+			let exppriceArr = []
+  			
+  			$(".subcheck:checked").each(function(){
+  				let tr = $(this).parent().parent();
+  				
+  				let expnum = (tr.find("[name=d_expnum]").val());
+  				let expitemname = (tr.find("[name=d_expitemname]").val());
+  				let itemname = (tr.find("[name=d_itemname]").val());
+  				let expquantity = (tr.find("[name=d_expquantity]").val());
+  				let expprice = (tr.find("[name=d_expprice]").val());
+  				
+  				expnumArr.push(expnum);
+  				expitemnameArr.push(expitemname);
+  				itemnameArr.push(itemname);
+  				expquantityArr.push(expquantity);
+  				exppriceArr.push(expprice);
+  			});
+  			
+  			$.ajax({
+  				url : '/expsubdata/checkModify',
+  				type : 'post',
+  				dataType : 'text',
+  				data : {
+  					expnumArr : expnumArr,
+  					expitemnameArr:expitemnameArr,
+  	  	  			itemnameArr:itemnameArr,
+  	  	  			expquantityArr:expquantityArr,
+  	  	  			exppriceArr:exppriceArr
+  				},
+  				success: function(data){
+  					if(data == "success"){
+  						alert("선택된 상품이 수정되었습니다.")
+  					}
+  				}
+  				
+  			})
+  			
+  		})
+  		
+  		
+  		
   	})
   		
   	</script>
@@ -132,8 +230,8 @@
     <button id="search">검색</button>
     <button id="add" onclick="rowsubAdd();">라인추가</button>
     <button id="subsave">신규등록</button>
-    <button id="modify">수정</button>
-    <button id="delete">삭제</button>
+    <button id="submodify">수정</button>
+    <button id="subdelete">삭제</button>
     <button id="refresh" onclick="window.location.reload()">새로고침</button>
     
     <table id="subexpTable" class="table">

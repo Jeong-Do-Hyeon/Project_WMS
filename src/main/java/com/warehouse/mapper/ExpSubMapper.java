@@ -17,9 +17,14 @@ public interface ExpSubMapper {
 			@Param("expquantity")Integer expquantity,
 			@Param("expprice")Integer expprice);
 	
-	public void checkDel(Integer impnum);
+	public void checkDel(String expitemname);
 	
-	public void checkModify();
+	public void checkModify(
+			@Param("expnum")Integer expnum,
+			@Param("expitemname")String expitemname,
+			@Param("itemname")String itemname,
+			@Param("expquantity")Integer expquantity,
+			@Param("expprice")Integer expprice);
 	
 	public List<ExpSubVO> getList(Integer expnum);
 	

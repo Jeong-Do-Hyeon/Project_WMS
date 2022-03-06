@@ -13,12 +13,17 @@ public interface ImpSubMapper {
 			@Param("impnum")Integer impnum,
 			@Param("impitemname")String impitemname,
 			@Param("itemname")String itemname,
-			@Param("itemquantity")String itemquantity,
-			@Param("itemprice")String itemprice);
+			@Param("itemquantity")Integer itemquantity,
+			@Param("itemprice")Integer itemprice);
 	
-	public void checkDel(Integer impnum);
+	public void checkDel(String impitemname);
 	
-	public void checkModify();
+	public void checkModify(
+			@Param("impnum")Integer impnum,
+			@Param("impitemname")String impitemname,
+			@Param("itemname")String itemname,
+			@Param("itemquantity")Integer itemquantity,
+			@Param("itemprice")Integer itemprice);
 	
 	public List<ImpSubVO> getList(Integer impnum);
 	

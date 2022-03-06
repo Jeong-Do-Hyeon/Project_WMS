@@ -22,9 +22,26 @@
 	 
 	WHERE impnum = #{impnum}
 	
-	
-	
+
 </select>
+
+<delete id="checkDel">
+
+	DELETE FROM impsub WHERE impitemname = #{impitemname}
+
+</delete>
+
+<update id="checkModify">
+
+	UPDATE impsub SET
+		impnum = #{impnum},
+		impitemname = #{impitemname},
+		itemname = #{itemname},
+		itemquantity = #{itemquantity},
+		itemprice = #{itemprice}
+	WHERE impitemname = #{impitemname} 
+
+</update>
 
 
 

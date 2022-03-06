@@ -46,8 +46,8 @@ public class ImpSubController {
 			@RequestParam("impnumArr[]") List<Integer> impnumArr,
 			@RequestParam("impitemnameArr[]") List<String> impitemnameArr,
 			@RequestParam("itemnameArr[]") List<String> itemnameArr,
-			@RequestParam("itemquantityArr[]") List<String> itemquantityArr,
-			@RequestParam("itempriceArr[]") List<String> itempriceArr){
+			@RequestParam("itemquantityArr[]") List<Integer> itemquantityArr,
+			@RequestParam("itempriceArr[]") List<Integer> itempriceArr){
 		
 		ResponseEntity<String> entity = null;
 		
@@ -71,5 +71,73 @@ public class ImpSubController {
 		
 		
 	}
+	
+	@ResponseBody
+	@PostMapping("/checkDel")
+	public ResponseEntity<String> checkDel(
+			@RequestParam("impitemnameArr[]") List<String> impitemnameArr){
+		
+		log.info(impitemnameArr);
+		
+		ResponseEntity<String> entity = null;
+		
+		try {
+			
+			for(int i=0; i<impitemnameArr.size(); i++) {
+				
+				service.checkDel(impitemnameArr.get(i));
+				
+			}
+			
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+		
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	@ResponseBody
+	@PostMapping("/checkModify")
+	public ResponseEntity<String> checkModify(
+			@RequestParam("impnumArr[]") List<Integer> impnumArr,
+			@RequestParam("impitemnameArr[]") List<String> impitemnameArr,
+			@RequestParam("itemnameArr[]") List<String> itemnameArr,
+			@RequestParam("itemquantityArr[]") List<Integer> itemquantityArr,
+			@RequestParam("itempriceArr[]") List<Integer> itempriceArr){
+		
+		log.info(impitemnameArr);
+		
+		ResponseEntity<String> entity = null;
+		
+		try {
+			
+			for(int i=0; i<impitemnameArr.size(); i++) {
+				
+				service.checkModify
+				(impnumArr.get(i), 
+				 impitemnameArr.get(i),
+				 itemnameArr.get(i),
+				 itemquantityArr.get(i),
+				 itempriceArr.get(i));
+				
+			}
+			
+			entity = new ResponseEntity<String>("success",HttpStatus.OK);
+			
+			}catch(Exception e) {
+				
+				e.printStackTrace();
+				entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+			
+		}
+		
+		return entity;
+		
+	}
+	
 
 }

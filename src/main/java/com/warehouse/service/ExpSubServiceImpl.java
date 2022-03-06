@@ -32,4 +32,17 @@ public class ExpSubServiceImpl implements ExpSubService {
 		return submapper.getList(expnum);
 	}
 
+	@Override
+	public void checkDel(String expitemname) {
+		// TODO Auto-generated method stub
+		submapper.checkDel(expitemname);
+	}
+
+	@Override
+	public void checkModify(Integer expnum, String expitemname, String itemname, Integer expquantity,
+			Integer expprice) {
+		// TODO Auto-generated method stub
+		submapper.checkModify(expnum, expitemname, itemname, expquantity, expprice);
+	}
+
 }

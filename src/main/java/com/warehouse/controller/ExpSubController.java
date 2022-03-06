@@ -69,4 +69,74 @@ public class ExpSubController {
 		
 	}
 	
+	@ResponseBody
+	@PostMapping("/checkDel")
+	public ResponseEntity<String> checkDel(
+			@RequestParam("expitemnameArr[]") List<String> expitemnameArr){
+		
+		log.info(expitemnameArr);
+		
+		ResponseEntity<String> entity = null;
+		
+		
+		try {
+			
+			for(int i=0; i<expitemnameArr.size(); i++) {
+				
+				service.checkDel(expitemnameArr.get(i));
+			}
+			
+			entity = new ResponseEntity<String>("success",HttpStatus.OK);
+		
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			entity = new ResponseEntity<String>("fail",HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	@ResponseBody
+	@PostMapping("/checkModify")
+	public ResponseEntity<String> checkModify(
+			@RequestParam("expnumArr[]") List<Integer> expnumArr,
+			@RequestParam("expitemnameArr[]") List<String> expitemnameArr,
+			@RequestParam("itemnameArr[]") List<String> itemnameArr,
+			@RequestParam("expquantityArr[]") List<Integer> expquantityArr,
+			@RequestParam("exppriceArr[]") List<Integer> exppriceArr){
+		
+		log.info(expitemnameArr);
+		
+		ResponseEntity<String> entity = null;
+		
+		try {
+			
+			for(int i=0; i<expitemnameArr.size(); i++) {
+				
+				service.checkModify
+				(expnumArr.get(i),
+				 expitemnameArr.get(i),
+				 itemnameArr.get(i),
+				 expquantityArr.get(i),
+				 exppriceArr.get(i));
+				
+			}
+				 
+			entity = new ResponseEntity<String>("success",HttpStatus.OK);
+				
+				
+			}catch(Exception e) {
+				
+				e.printStackTrace();
+				entity = new ResponseEntity<String>("fail",HttpStatus.BAD_REQUEST);
+			
+		}
+		
+		return entity;
+		
+		
+	}
+	
+	
 }

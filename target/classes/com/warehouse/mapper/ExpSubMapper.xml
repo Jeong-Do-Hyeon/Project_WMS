@@ -26,6 +26,24 @@
 	
 </select>
 
+<delete id="checkDel">
+
+	DELETE FROM expsub WHERE expitemname = #{expitemname}
+
+</delete>
+
+<update id="checkModify">
+
+	UPDATE expsub SET
+		expnum = #{expnum},
+		expitemname = #{expitemname},
+		itemname = #{itemname},
+		expquantity = #{expquantity},
+		expprice = #{expprice}
+	WHERE expitemname = #{expitemname} 
+
+</update>
+
 
 
 </mapper>

@@ -58,11 +58,11 @@
   		
   		$("#subsave").on("click", function(){
   			if($(".subcheck:checked").length ==0){
-  				alert("등록할 주문을 선택하세요")
+  				alert("등록할 상품을 선택하세요")
   				return;
   			}
   			
-  			let isAdd = confirm("선택한 주문을 등록하시겠습니까?");
+  			let isAdd = confirm("선택한 상품을 등록하시겠습니까?");
   			
   			if(!isAdd) return;
   			
@@ -118,12 +118,109 @@
   				},
   				success: function(data){
   					if(data == "success"){
-  						alert("선택된 주문이 등록되었습니다")
+  						alert("선택된 상품이 등록되었습니다")
   					}
   				}
   			
   			})
   		})
+  		
+  		$("#subdelete").on("click", function(){
+  			if($(".subcheck:checked").length == 0){
+  				alert("삭제할 상품을 선택하세요")
+  				return;
+  			}
+  			
+  			let isDel = confirm("선택한 상품을 삭제하시겠습니까?")
+  			
+  			if(!isDel) return;
+  			
+  			let impitemnameArr = []
+  			
+  			$(".subcheck:checked").each(function(){
+  				
+  				let tr = $(this).parent().parent();
+  				
+  				let impitemname = (tr.find("[name=d_impitemname]").val());
+  				
+  				console.log(impitemname);
+  				
+  				impitemnameArr.push(impitemname)
+  					
+  			});
+  			
+  			$.ajax({
+  				url : "/subdata/checkDel",
+  				type : 'post',
+  				dataType : 'text',
+  				data:{
+  					impitemnameArr : impitemnameArr
+  				},
+  				success: function(data){
+  					if(data == "success"){
+  						alert("선택된 상품이 삭제되었습니다")
+  					}
+  				}
+  			
+  		})
+  		
+  		
+  		})
+  		
+  		$("#submodify").on("click",function(){
+  			if($(".subcheck:checked").length == 0){
+  				alert("수정할 상품을 선택하세요")
+  				return;;
+  			}
+  			
+  			let isModify = confirm("선택한 상품을 수정하시겠습니까?");
+  			
+  			if(!isModify) return;
+  			let impnumArr = []
+  			let impitemnameArr = []
+	  		let itemnameArr = []
+  			let itemquantityArr = []
+	  		let itempriceArr = [] 
+  			
+  			$(".subcheck:checked").each(function(){
+  				let tr = $(this).parent().parent();
+  				
+  				let impnum = (tr.find("[name=d_impnum]").val());
+  				let impitemname = (tr.find("[name=d_impitemname]").val());
+  				let itemname = (tr.find("[name=d_itemname]").val());
+  				let itemquantity = (tr.find("[name=d_itemquantity]").val());
+  				let itemprice = (tr.find("[name=d_itemprice]").val());
+  				
+  				impnumArr.push(impnum);
+  				impitemnameArr.push(impitemname);
+  				itemnameArr.push(itemname);
+  				itemquantityArr.push(itemquantity);
+  				itempriceArr.push(itemprice);
+  			});
+  			
+  			$.ajax({
+  				url : '/subdata/checkModify',
+  				type : 'post',
+  				dataType : 'text',
+  				data : {
+  					impnumArr : impnumArr,
+  	  				impitemnameArr : impitemnameArr,
+  	  				itemnameArr : itemnameArr,
+  	  				itemquantityArr : itemquantityArr,
+  	  				itempriceArr : itempriceArr	
+  				},
+  				success: function(data){
+  					if(data == "success"){
+  						alert("선택된 상품이 수정되었습니다.")
+  					}
+  				}
+  				
+  			})
+  			
+  		})
+  		
+  		
+  		
   	})
   		
   	</script>
@@ -132,8 +229,8 @@
     <button id="search">검색</button>
     <button id="add" onclick="rowsubAdd();">라인추가</button>
     <button id="subsave">신규등록</button>
-    <button id="modify">수정</button>
-    <button id="delete">삭제</button>
+    <button id="submodify">수정</button>
+    <button id="subdelete">삭제</button>
     <button id="refresh" onclick="window.location.reload()">새로고침</button>
     
     <table id="subimpTable" class="table">

@@ -34,9 +34,27 @@ public class ImpSubServiceImpl implements ImpSubService {
 
 
 	@Override
-	public void checkAdd(Integer impnum, String impitemname, String itemname, String itemquantity, String itemprice) {
+	public void checkAdd(Integer impnum, String impitemname, String itemname, Integer itemquantity, Integer itemprice) {
 		// TODO Auto-generated method stub
 		submapper.checkAdd(impnum, impitemname, itemname, itemquantity, itemprice);
+	}
+
+
+
+	@Override
+	public void checkDel(String impitemname) {
+		// TODO Auto-generated method stub
+		submapper.checkDel(impitemname);
+	}
+
+
+
+	@Override
+	public void checkModify(Integer impnum, String impitemname, String itemname, Integer itemquantity,
+			Integer itemprice) {
+		// TODO Auto-generated method stub
+		
+		submapper.checkModify(impnum, impitemname, itemname, itemquantity, itemprice);
 	}
 
 
