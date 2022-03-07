@@ -17,10 +17,10 @@ public interface ExpSubMapper {
 			@Param("expquantity")Integer expquantity,
 			@Param("expprice")Integer expprice);
 	
-	public void checkDel(String expitemname);
+	public void checkDel(Integer expsubindex);
 	
 	public void checkModify(
-			@Param("expnum")Integer expnum,
+			@Param("expsubindex")Integer expsubindex,
 			@Param("expitemname")String expitemname,
 			@Param("itemname")String itemname,
 			@Param("expquantity")Integer expquantity,

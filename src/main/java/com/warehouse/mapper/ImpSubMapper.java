@@ -16,10 +16,10 @@ public interface ImpSubMapper {
 			@Param("itemquantity")Integer itemquantity,
 			@Param("itemprice")Integer itemprice);
 	
-	public void checkDel(String impitemname);
+	public void checkDel(Integer impsubindex);
 	
 	public void checkModify(
-			@Param("impnum")Integer impnum,
+			@Param("impsubindex")Integer impsubindex,
 			@Param("impitemname")String impitemname,
 			@Param("itemname")String itemname,
 			@Param("itemquantity")Integer itemquantity,

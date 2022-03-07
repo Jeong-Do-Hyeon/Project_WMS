@@ -72,18 +72,18 @@ public class ExpSubController {
 	@ResponseBody
 	@PostMapping("/checkDel")
 	public ResponseEntity<String> checkDel(
-			@RequestParam("expitemnameArr[]") List<String> expitemnameArr){
+			@RequestParam("expsubindexArr[]") List<Integer> expsubindexArr){
 		
-		log.info(expitemnameArr);
+		log.info(expsubindexArr);
 		
 		ResponseEntity<String> entity = null;
 		
 		
 		try {
 			
-			for(int i=0; i<expitemnameArr.size(); i++) {
+			for(int i=0; i<expsubindexArr.size(); i++) {
 				
-				service.checkDel(expitemnameArr.get(i));
+				service.checkDel(expsubindexArr.get(i));
 			}
 			
 			entity = new ResponseEntity<String>("success",HttpStatus.OK);
@@ -100,22 +100,22 @@ public class ExpSubController {
 	@ResponseBody
 	@PostMapping("/checkModify")
 	public ResponseEntity<String> checkModify(
-			@RequestParam("expnumArr[]") List<Integer> expnumArr,
+			@RequestParam("expsubindexArr[]") List<Integer> expsubindexArr,
 			@RequestParam("expitemnameArr[]") List<String> expitemnameArr,
 			@RequestParam("itemnameArr[]") List<String> itemnameArr,
 			@RequestParam("expquantityArr[]") List<Integer> expquantityArr,
 			@RequestParam("exppriceArr[]") List<Integer> exppriceArr){
 		
-		log.info(expitemnameArr);
+		log.info(expsubindexArr);
 		
 		ResponseEntity<String> entity = null;
 		
 		try {
 			
-			for(int i=0; i<expitemnameArr.size(); i++) {
+			for(int i=0; i<expsubindexArr.size(); i++) {
 				
 				service.checkModify
-				(expnumArr.get(i),
+				(expsubindexArr.get(i),
 				 expitemnameArr.get(i),
 				 itemnameArr.get(i),
 				 expquantityArr.get(i),

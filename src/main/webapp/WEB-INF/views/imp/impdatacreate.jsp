@@ -350,7 +350,7 @@ desired effect
     		<c:forEach items="${impdatacreate}" var="ImpVO" varStatus="status">
     		<tr class="data" style="font-size: 12px; font-weight= 600;">
     			<td class="text-center">
-    				<input type="checkbox" class="check" value="${ImpVO.impnum }">
+    				<input type="checkbox" class="check" value="${ImpVO.impnum}">
     			</td>
     			<td>
     			</td>

@@ -4,7 +4,7 @@
 
 <insert id="checkAdd">
 
-	INSERT INTO impsub (impnum, impitemname, itemname, itemquantity, itemprice) VALUES (#{impnum}, #{impitemname}, #{itemname}, #{itemquantity}, #{itemprice}) 
+	INSERT INTO impsub (impsubindex, impnum, impitemname, itemname, itemquantity, itemprice) VALUES (impsubindex.nextval, #{impnum}, #{impitemname}, #{itemname}, #{itemquantity}, #{itemprice}) 
 	
 </insert>
 
@@ -12,6 +12,7 @@
 	
 	SELECT
 	
+	impsubindex,
 	impnum,
 	impitemname,
 	itemname,
@@ -27,19 +28,19 @@
 
 <delete id="checkDel">
 
-	DELETE FROM impsub WHERE impitemname = #{impitemname}
+	DELETE FROM impsub WHERE impsubindex = #{impsubindex}
 
 </delete>
 
 <update id="checkModify">
 
 	UPDATE impsub SET
-		impnum = #{impnum},
+		impsubindex = #{impsubindex},
 		impitemname = #{impitemname},
 		itemname = #{itemname},
 		itemquantity = #{itemquantity},
 		itemprice = #{itemprice}
-	WHERE impitemname = #{impitemname} 
+	WHERE impsubindex = #{impsubindex} 
 
 </update>
 

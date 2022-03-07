@@ -124,17 +124,17 @@
   			
   			if(!isDel) return;
   			
-  			let expitemnameArr = []
+  			let expsubindexArr = []
   			
   			$(".subcheck:checked").each(function(){
   				
   				let tr = $(this).parent().parent();
   				
-  				let expitemname = (tr.find("[name=d_expitemname]").val());
+  				let expsubindex = (tr.find("[name=d_expsubindex]").val());
   				
-  				console.log(expitemname);
+  				console.log(expsubindex);
   				
-  				expitemnameArr.push(expitemname)
+  				expsubindexArr.push(expsubindex);
   					
   			});
   			
@@ -143,7 +143,7 @@
   				type : 'post',
   				dataType : 'text',
   				data:{
-  					expitemnameArr : expitemnameArr
+  					expsubindexArr : expsubindexArr
   				},
   				success: function(data){
   					if(data == "success"){
@@ -165,7 +165,7 @@
   			let isModify = confirm("선택한 상품을 수정하시겠습니까?");
   			
   			if(!isModify) return;
-  			let expnumArr = []
+  			let expsubindexArr = []
   			let expitemnameArr = []
   			let itemnameArr = []
   			let expquantityArr = []
@@ -174,13 +174,13 @@
   			$(".subcheck:checked").each(function(){
   				let tr = $(this).parent().parent();
   				
-  				let expnum = (tr.find("[name=d_expnum]").val());
+  				let expsubindex = (tr.find("[name=d_expsubindex]").val());
   				let expitemname = (tr.find("[name=d_expitemname]").val());
   				let itemname = (tr.find("[name=d_itemname]").val());
   				let expquantity = (tr.find("[name=d_expquantity]").val());
   				let expprice = (tr.find("[name=d_expprice]").val());
   				
-  				expnumArr.push(expnum);
+  				expsubindexArr.push(expsubindex);
   				expitemnameArr.push(expitemname);
   				itemnameArr.push(itemname);
   				expquantityArr.push(expquantity);
@@ -192,7 +192,7 @@
   				type : 'post',
   				dataType : 'text',
   				data : {
-  					expnumArr : expnumArr,
+  					expsubindexArr : expsubindexArr,
   					expitemnameArr:expitemnameArr,
   	  	  			itemnameArr:itemnameArr,
   	  	  			expquantityArr:expquantityArr,
@@ -255,7 +255,7 @@
     			</td>
     			<td class="text-center">
     				<input type="text" name="d_expprice" value='<c:out value="${ExpSubVO.expprice}"></c:out>' style="width:100%; border:0; text-align:center;">
-    				<input type="hidden" name="d_expnum" value='<c:out value="${ExpSubVO.expnum}"></c:out>' style="width:100%; border:0; text-align:center;">
+    				<input type="hidden" name="d_expsubindex" value='<c:out value="${ExpSubVO.expsubindex}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			
     		</tr>

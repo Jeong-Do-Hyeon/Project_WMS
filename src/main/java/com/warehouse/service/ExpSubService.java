@@ -13,10 +13,10 @@ public interface ExpSubService {
 			Integer exqquantity,
 			Integer expprice);
 	
-	public void checkDel(String expitemname);
+	public void checkDel(Integer expsubindex);
 	
 	public void checkModify(
-			Integer expnum,
+			Integer expsubindex,
 			String expitemname,
 			String itemname,
 			Integer expquantity,

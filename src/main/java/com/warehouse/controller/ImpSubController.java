@@ -75,17 +75,17 @@ public class ImpSubController {
 	@ResponseBody
 	@PostMapping("/checkDel")
 	public ResponseEntity<String> checkDel(
-			@RequestParam("impitemnameArr[]") List<String> impitemnameArr){
+			@RequestParam("impsubindexArr[]") List<Integer> impsubindexArr){
 		
-		log.info(impitemnameArr);
+		log.info(impsubindexArr);
 		
 		ResponseEntity<String> entity = null;
 		
 		try {
 			
-			for(int i=0; i<impitemnameArr.size(); i++) {
+			for(int i=0; i<impsubindexArr.size(); i++) {
 				
-				service.checkDel(impitemnameArr.get(i));
+				service.checkDel(impsubindexArr.get(i));
 				
 			}
 			
@@ -103,22 +103,22 @@ public class ImpSubController {
 	@ResponseBody
 	@PostMapping("/checkModify")
 	public ResponseEntity<String> checkModify(
-			@RequestParam("impnumArr[]") List<Integer> impnumArr,
+			@RequestParam("impsubindexArr[]") List<Integer> impsubindexArr,
 			@RequestParam("impitemnameArr[]") List<String> impitemnameArr,
 			@RequestParam("itemnameArr[]") List<String> itemnameArr,
 			@RequestParam("itemquantityArr[]") List<Integer> itemquantityArr,
 			@RequestParam("itempriceArr[]") List<Integer> itempriceArr){
 		
-		log.info(impitemnameArr);
+		log.info(impsubindexArr);
 		
 		ResponseEntity<String> entity = null;
 		
 		try {
 			
-			for(int i=0; i<impitemnameArr.size(); i++) {
+			for(int i=0; i<impsubindexArr.size(); i++) {
 				
 				service.checkModify
-				(impnumArr.get(i), 
+				(impsubindexArr.get(i), 
 				 impitemnameArr.get(i),
 				 itemnameArr.get(i),
 				 itemquantityArr.get(i),

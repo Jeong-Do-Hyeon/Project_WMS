@@ -135,17 +135,17 @@
   			
   			if(!isDel) return;
   			
-  			let impitemnameArr = []
+  			let impsubindexArr = []
   			
   			$(".subcheck:checked").each(function(){
   				
   				let tr = $(this).parent().parent();
   				
-  				let impitemname = (tr.find("[name=d_impitemname]").val());
+  				let impsubindex = (tr.find("[name=d_impsubindex]").val());
   				
-  				console.log(impitemname);
+  				console.log(impsubindex);
   				
-  				impitemnameArr.push(impitemname)
+  				impsubindexArr.push(impsubindex);
   					
   			});
   			
@@ -154,7 +154,7 @@
   				type : 'post',
   				dataType : 'text',
   				data:{
-  					impitemnameArr : impitemnameArr
+  					impsubindexArr : impsubindexArr
   				},
   				success: function(data){
   					if(data == "success"){
@@ -176,7 +176,7 @@
   			let isModify = confirm("선택한 상품을 수정하시겠습니까?");
   			
   			if(!isModify) return;
-  			let impnumArr = []
+  			let impsubindexArr = []
   			let impitemnameArr = []
 	  		let itemnameArr = []
   			let itemquantityArr = []
@@ -185,13 +185,13 @@
   			$(".subcheck:checked").each(function(){
   				let tr = $(this).parent().parent();
   				
-  				let impnum = (tr.find("[name=d_impnum]").val());
+  				let impsubindex = (tr.find("[name=d_impsubindex]").val());
   				let impitemname = (tr.find("[name=d_impitemname]").val());
   				let itemname = (tr.find("[name=d_itemname]").val());
   				let itemquantity = (tr.find("[name=d_itemquantity]").val());
   				let itemprice = (tr.find("[name=d_itemprice]").val());
   				
-  				impnumArr.push(impnum);
+  				impsubindexArr.push(impsubindex);
   				impitemnameArr.push(impitemname);
   				itemnameArr.push(itemname);
   				itemquantityArr.push(itemquantity);
@@ -203,7 +203,7 @@
   				type : 'post',
   				dataType : 'text',
   				data : {
-  					impnumArr : impnumArr,
+  					impsubindexArr : impsubindexArr,
   	  				impitemnameArr : impitemnameArr,
   	  				itemnameArr : itemnameArr,
   	  				itemquantityArr : itemquantityArr,
@@ -266,7 +266,7 @@
     			</td>
     			<td class="text-center">
     				<input type="text" name="d_itemprice" value='<c:out value="${ImpSubVO.itemprice}"></c:out>' style="width:100%; border:0; text-align:center;">
-    				<input type="hidden" name="d_impnum" value='<c:out value="${ImpSubVO.impnum}"></c:out>' style="width:100%; border:0; text-align:center;">
+    				<input type="hidden" name="d_impsubindex" value='<c:out value="${ImpSubVO.impsubindex}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     			
     		</tr>

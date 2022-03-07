@@ -23,7 +23,7 @@
 <update id="checkModify">
 
 	UPDATE imp SET
-		supply1 = #{supply1}, 
+		supply1 = #{supply1},
 	    impdate = #{impdate},
 	    note = #{note}
 	WHERE impnum = #{impnum} 

@@ -33,16 +33,16 @@ public class ExpSubServiceImpl implements ExpSubService {
 	}
 
 	@Override
-	public void checkDel(String expitemname) {
+	public void checkDel(Integer expsubindex) {
 		// TODO Auto-generated method stub
-		submapper.checkDel(expitemname);
+		submapper.checkDel(expsubindex);
 	}
 
 	@Override
-	public void checkModify(Integer expnum, String expitemname, String itemname, Integer expquantity,
+	public void checkModify(Integer expsubindex, String expitemname, String itemname, Integer expquantity,
 			Integer expprice) {
 		// TODO Auto-generated method stub
-		submapper.checkModify(expnum, expitemname, itemname, expquantity, expprice);
+		submapper.checkModify(expsubindex, expitemname, itemname, expquantity, expprice);
 	}
 
 }

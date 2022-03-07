@@ -4,7 +4,7 @@
 
 <insert id="checkAdd">
 
-	INSERT INTO expsub (expnum, expitemname, itemname, expquantity, expprice) VALUES (#{expnum}, #{expitemname}, #{itemname}, #{expquantity}, #{expprice}) 
+	INSERT INTO expsub (expsubindex, expnum, expitemname, itemname, expquantity, expprice) VALUES (expsubindex.nextval, #{expnum}, #{expitemname}, #{itemname}, #{expquantity}, #{expprice}) 
 	
 </insert>
 
@@ -12,6 +12,7 @@
 	
 	SELECT
 	
+	expsubindex,
 	expnum, 
 	expitemname, 
 	itemname, 
@@ -28,19 +29,19 @@
 
 <delete id="checkDel">
 
-	DELETE FROM expsub WHERE expitemname = #{expitemname}
+	DELETE FROM expsub WHERE expsubindex = #{expsubindex}
 
 </delete>
 
 <update id="checkModify">
 
 	UPDATE expsub SET
-		expnum = #{expnum},
+		expsubindex = #{expsubindex},
 		expitemname = #{expitemname},
 		itemname = #{itemname},
 		expquantity = #{expquantity},
 		expprice = #{expprice}
-	WHERE expitemname = #{expitemname} 
+	WHERE expsubindex = #{expsubindex} 
 
 </update>
 

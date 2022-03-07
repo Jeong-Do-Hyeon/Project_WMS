@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ImpSubVO {
 	
+	private Integer impsubindex;
 	private Integer impnum;
 	private String impitemname;
 	private String itemname;
