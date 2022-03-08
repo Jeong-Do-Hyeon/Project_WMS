@@ -10,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.warehouse.domain.ImpSubVO;
 import com.warehouse.domain.ImpVO;
 import com.warehouse.service.ImpService;
 
@@ -138,7 +140,54 @@ public class ImpController {
 	}
 	
 	@GetMapping("/impcomplete")
-	public void impcomplete() {
-
+	public String impcomplete(Model model) {
+	
+		List<ImpSubVO> list = service.gettotalList();
+		
+		model.addAttribute("impcomplete", list);
+		
+		return "/imp/impcomplete";
+		
 	}
-}
+	
+	@ResponseBody
+	@PostMapping("/impcomplete")
+	public ResponseEntity<String> checkAddInventory(
+			@RequestParam("impitemnameArr[]") List<String> impitemnameArr,
+			@RequestParam("itemnameArr[]") List<String> itemnameArr,
+			@RequestParam("impdepotArr[]") List<String> impdepotArr,
+			@RequestParam("implocationArr[]") List<String> implocationArr,
+			@RequestParam("quantityArr[]") List<Integer> quantityArr,
+			@RequestParam("impdateArr[]") List<String> impdateArr){
+		
+		log.info(impitemnameArr);
+		log.info(itemnameArr);
+		log.info(impdepotArr);
+		log.info(implocationArr);
+		log.info(quantityArr);
+		log.info(impdateArr);
+		
+		ResponseEntity<String> entity = null;
+		
+		try {
+			
+			for(int i=0; i<impitemnameArr.size(); i++) {
+				
+			service.checkAddInventory(impitemnameArr.get(i), itemnameArr.get(i), impdepotArr.get(i), implocationArr.get(i), quantityArr.get(i), impdateArr.get(i));
+			
+			}
+			
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+		}
+		
+		
+		return entity;
+	}
+		
+		
+	}

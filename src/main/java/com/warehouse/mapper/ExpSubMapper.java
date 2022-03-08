@@ -28,5 +28,7 @@ public interface ExpSubMapper {
 	
 	public List<ExpSubVO> getList(Integer expnum);
 	
+	public List<ExpSubVO> exppickdoList();
+	
 	
 }

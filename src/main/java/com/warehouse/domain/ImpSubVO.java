@@ -1,5 +1,7 @@
 package com.warehouse.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data

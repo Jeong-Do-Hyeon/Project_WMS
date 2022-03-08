@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.warehouse.domain.ExpSubVO;
 import com.warehouse.domain.ExpVO;
 import com.warehouse.mapper.ExpMapper;
+import com.warehouse.mapper.ExpSubMapper;
 
 import lombok.Setter;
 
@@ -15,6 +17,10 @@ public class ExpServiceImpl implements ExpService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private ExpMapper mapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private ExpSubMapper submapper;
+	
 	
 
 	@Override
@@ -54,6 +60,12 @@ public class ExpServiceImpl implements ExpService {
 	public List<ExpVO> getList() {
 		// TODO Auto-generated method stub
 		return mapper.getList();
+	}
+
+	@Override
+	public List<ExpSubVO> exppickdoList() {
+		// TODO Auto-generated method stub
+		return mapper.exppickdoList();
 	}
 
 }

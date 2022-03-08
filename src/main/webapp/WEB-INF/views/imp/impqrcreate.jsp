@@ -54,7 +54,6 @@ desired effect
     <section class="content container-fluid">
     
     <button id="search">검색</button>
-    <button id="createlot">LOT생성</button>
     <button id="printqr">바코드출력</button>
     <button id="refresh" onclick="window.location.reload()">새로고침</button>
     
@@ -62,9 +61,10 @@ desired effect
     	<thead>
     		<tr class="menu">
     			<td class="text-center"><strong><input type="checkbox" name="check"></strong></td>
+    			<td class="text-center"><strong>입고번호</strong></td>
     			<td class="text-center"><strong>상품이름</strong></td>
     			<td class="text-center"><strong>판매이름</strong></td>
-    			<td class="text-center"><strong>LOT</strong></td>
+    			<td class="text-center"><strong>입고수량</strong></td>
     		</tr>
     	</thead>
     </table>

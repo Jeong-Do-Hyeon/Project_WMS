@@ -8,6 +8,32 @@
 	
 </insert>
 
+<insert id ="checkAddInventory">
+
+	INSERT INTO inventory (inventorynum, impitemname, itemname, impdepot, implocation, quantity, impdate) VALUES (inventorynum.nextval, #{impitemname}, #{itemname}, #{impdepot}, #{implocation}, #{quantity}, #{impdate})
+
+</insert>
+
+<insert id ="checkAddInventoryCheck">
+
+	MERGE INTO inventory
+	USING impsub
+	ON inventory.impnum = impsub.inventorynum 
+	WHEN MATCHED THEN
+	UPDATE SET
+		inventorynum = inventorynum.nextval
+		impitemname = #{impitemname}
+		itemname = #{itemname}
+		impdepot = #{impdepot}
+		implocation = #{implocation}
+		quantity = #{quantity}
+		impdate = #{impdate}
+	WHEN NOT MATCHED THEN
+		INSERT (inventorynum, impitemname, itemname, impdepot, implocation, quantity, impdate)
+		VALUES (inventorynum.nextval, #{impitemname}, #{itemname}, #{impdepot}, #{implocation}, #{quantity}, #{impdate})
+
+</insert>
+
 <select id="getList" resultType="com.warehouse.domain.ImpVO">
 
 	SELECT impnum, supply1, impdate, note FROM imp

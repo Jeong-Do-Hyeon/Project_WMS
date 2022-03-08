@@ -8,6 +8,8 @@
 	
 </insert>
 
+
+
 <select id="getList" resultType="com.warehouse.domain.ImpSubVO">
 	
 	SELECT
@@ -24,6 +26,21 @@
 	WHERE impnum = #{impnum}
 	
 
+</select>
+
+<select id="gettotalList" resultType="com.warehouse.domain.ImpSubVO">
+	
+	SELECT
+	
+	impsubindex,
+	impnum,
+	impitemname,
+	itemname,
+	itemquantity,
+	itemprice
+	 
+	FROM impsub
+	
 </select>
 
 <delete id="checkDel">

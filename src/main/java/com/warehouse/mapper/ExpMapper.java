@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.warehouse.domain.ExpSubVO;
 import com.warehouse.domain.ExpVO;
 
 public interface ExpMapper {
@@ -30,5 +31,7 @@ public interface ExpMapper {
 	 @Param("note")String note);
 	
 	public List<ExpVO> getList();
+	
+	public List<ExpSubVO> exppickdoList();
 	
 }

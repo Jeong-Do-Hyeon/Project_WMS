@@ -68,6 +68,18 @@
 
 </update>
 
+<select id="exppickdoList" resultType="com.warehouse.domain.ExpSubVO">
+
+	SELECT
+	
+		expnum,
+		expitemname,
+		itemname,
+		expquantity
+		
+	FROM expsub
+
+</select>
 	
 
 

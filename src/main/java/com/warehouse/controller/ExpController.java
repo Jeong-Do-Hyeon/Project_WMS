@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.warehouse.domain.ExpSubVO;
 import com.warehouse.domain.ExpVO;
+import com.warehouse.domain.ImpSubVO;
 import com.warehouse.service.ExpService;
 
 import lombok.AllArgsConstructor;
@@ -162,8 +164,15 @@ public class ExpController {
 	}
 	
 	@GetMapping("/exppickdo")
-	public void exppickdo() {
-
+	public String exppickdo(Model model) {
+		
+		List<ExpSubVO> list = service.exppickdoList();
+		
+		model.addAttribute("exppickdoList", list);
+		
+		return "/exp/exppickdo";
+		
+		
 	}
 	
 	@GetMapping("/expcomplete")

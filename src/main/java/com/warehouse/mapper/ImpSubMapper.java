@@ -27,5 +27,7 @@ public interface ImpSubMapper {
 	
 	public List<ImpSubVO> getList(Integer impnum);
 	
+	public List<ImpSubVO> gettotalList();
+	
 	
 }

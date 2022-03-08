@@ -59,5 +59,13 @@ public class ImpSubServiceImpl implements ImpSubService {
 
 
 
+	@Override
+	public List<ImpSubVO> gettotalList() {
+		// TODO Auto-generated method stub
+		return submapper.gettotalList();
+	}
+
+
+
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
 
+import com.warehouse.domain.ImpSubVO;
 import com.warehouse.domain.ImpVO;
 
 public interface ImpMapper {
@@ -18,4 +19,23 @@ public interface ImpMapper {
 	
 	public List<ImpVO> getList();
 	
+	public List<ImpSubVO> gettotalList();
+	
+	public void checkAddInventory
+	(@Param("impitemname")String impitemname,
+	 @Param("itemname")String itemname,
+	 @Param("impdepot")String impdepot,
+	 @Param("implocation")String implocation,
+	 @Param("quantity")Integer quantity,
+	 @Param("impdate")String impdate);
+	
+	public void checkAddInventoryCheck
+	(@Param("inventorynum")String inventorynum,
+	 @Param("impitemname")String impitemname,
+	 @Param("itemname")String itemname,
+	 @Param("impdepot")String impdepot,
+	 @Param("implocation")String implocation,
+	 @Param("quantity")Integer quantity,
+	 @Param("impdate")String impdate);
+
 }

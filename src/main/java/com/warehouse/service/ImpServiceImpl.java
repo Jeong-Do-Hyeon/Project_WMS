@@ -5,10 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.warehouse.domain.ImpSubVO;
 import com.warehouse.domain.ImpVO;
 import com.warehouse.mapper.ImpMapper;
+import com.warehouse.mapper.ImpSubMapper;
 
 import lombok.Setter;
 
@@ -17,6 +20,9 @@ public class ImpServiceImpl implements ImpService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private ImpMapper mapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private ImpSubMapper submapper;
 
 	@Override
 	public void checkAdd(String supply1, String impdate, String note) {
@@ -40,6 +46,20 @@ public class ImpServiceImpl implements ImpService {
 	public void checkModify(Integer impnum, String supply1, String impdate, String note) {
 		// TODO Auto-generated method stub
 		mapper.checkModify(impnum, supply1, impdate, note);
+	}
+
+	@Override
+	public List<ImpSubVO> gettotalList() {
+		// TODO Auto-generated method stub
+		return submapper.gettotalList();
+	}
+
+	@Transactional
+	@Override
+	public void checkAddInventory(String impitemname, String itemname, String impdepot, String implocation,
+			Integer quantity, String impdate) {
+		mapper.checkAddInventory(impitemname, itemname, impdepot, implocation, quantity, impdate);
+		
 	}
 
 
