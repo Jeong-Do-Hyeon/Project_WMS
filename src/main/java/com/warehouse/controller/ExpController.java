@@ -176,12 +176,61 @@ public class ExpController {
 	}
 	
 	@GetMapping("/expcomplete")
-	public void expcomplete() {
+	public String expcomplete(Model model) {
+		List<ExpVO> list = service.expcomplete();
 		
+		model.addAttribute("expcomplete", list);
+		
+		return "/exp/expcomplete";
 	}
 	
-	@GetMapping("/expdataprint")
-	public void expdataprint() {
+	@ResponseBody
+	@PostMapping("/exppickdo")
+	public ResponseEntity<String> exppickdo(
+			@RequestParam("expnumArr[]")List<Integer> expnumArr,
+			@RequestParam("expitemnameArr[]")List<String> expitemnameArr,
+			@RequestParam("itemnameArr[]")List<String> itemnameArr,
+			@RequestParam("expquantityArr[]")List<Integer> expquantityArr){
 		
+		log.info(expnumArr);
+		log.info(expitemnameArr);
+		log.info(itemnameArr);
+		log.info(expquantityArr);
+		
+		ResponseEntity<String> entity = null;
+		
+		try {
+			
+			for(int i=0; i<expnumArr.size(); i++) {
+				
+			service.exppickdo
+			(expnumArr.get(i),
+			 expitemnameArr.get(i),
+			 itemnameArr.get(i),
+			 expquantityArr.get(i));			
+			}
+			
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+		}
+		
+		
+		return entity;
+	}
+	
+	
+	
+	
+	@GetMapping("/expdataprint")
+	public String expdataprint(Model model) {
+		List<ExpVO> list = service.expdataprint();
+		
+		model.addAttribute("expdataprint", list);
+		
+		return "/exp/expdataprint";
 	}
 }

@@ -73,6 +73,7 @@ desired effect
     			<td class="text-center">
     				<input type="checkbox" class="check" value="${ExpVO.expnum}">
     			<td>
+    				<input type="text" name="d_status"	value='<c:out value="${ExpVO.status}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
 				<td>
     				<input type="text" name="d_expnum" value='<c:out value="${ExpVO.expnum}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>

@@ -30,7 +30,7 @@ public interface ImpMapper {
 	 @Param("impdate")String impdate);
 	
 	public void checkAddInventoryCheck
-	(@Param("inventorynum")String inventorynum,
+	(@Param("impsubindex")Integer impsubindex,
 	 @Param("impitemname")String impitemname,
 	 @Param("itemname")String itemname,
 	 @Param("impdepot")String impdepot,

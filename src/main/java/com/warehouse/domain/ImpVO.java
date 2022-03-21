@@ -11,5 +11,6 @@ public class ImpVO {
 	private String supply1;
 	private Date impdate;
 	private String note;
+	private String status;
 
 }

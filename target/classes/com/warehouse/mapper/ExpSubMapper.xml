@@ -4,7 +4,7 @@
 
 <insert id="checkAdd">
 
-	INSERT INTO expsub (expsubindex, expnum, expitemname, itemname, expquantity, expprice) VALUES (expsubindex.nextval, #{expnum}, #{expitemname}, #{itemname}, #{expquantity}, #{expprice}) 
+	INSERT INTO expsub (expsubindex, expnum, expitemname, itemname, expquantity, expprice, status) VALUES (expsubindex.nextval, #{expnum}, #{expitemname}, #{itemname}, #{expquantity}, #{expprice}, '미할당') 
 	
 </insert>
 
@@ -12,6 +12,7 @@
 	
 	SELECT
 	
+	status,
 	expsubindex,
 	expnum, 
 	expitemname, 

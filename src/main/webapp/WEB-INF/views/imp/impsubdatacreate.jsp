@@ -254,6 +254,7 @@
     			<td>
     			</td>
     			<td>
+    				<input type="text" name="d_status"	value='<c:out value="${ImpSubVO.status}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
     			<td>
     				<input type="text" name="d_impitemname" value='<c:out value="${ImpSubVO.impitemname}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;">

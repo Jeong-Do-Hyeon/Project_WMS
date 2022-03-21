@@ -13,4 +13,5 @@ public class ImpSubVO {
 	private String itemname;
 	private Integer itemquantity;
 	private Integer itemprice;
+	private String status;
 }

@@ -227,7 +227,7 @@
     		<tr class="menu">
     			<td class="text-center"><strong><input type="checkbox" id="subcheckAll" name="subcheckAll"></strong></td>
     			<td class="text-center"><strong>No.</strong></td>
-    			<td class="text-center"><strong>입고상태</strong></td>
+    			<td class="text-center"><strong>출고상태</strong></td>
     			<td class="text-center"><strong>상품이름</strong></td>
     			<td class="text-center"><strong>판매이름</strong></td>
     			<td class="text-center"><strong>출고수량</strong></td>
@@ -243,6 +243,7 @@
     			<td>
     			</td>
     			<td>
+    				<input type="text" name="d_status"	value='<c:out value="${ExpSubVO.status}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
     			<td>
     				<input type="text" name="d_expitemname" value='<c:out value="${ExpSubVO.expitemname}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;">

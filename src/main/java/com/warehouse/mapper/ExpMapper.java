@@ -34,4 +34,14 @@ public interface ExpMapper {
 	
 	public List<ExpSubVO> exppickdoList();
 	
+	public List<ExpVO> expcomplete();
+	
+	public void exppickdo
+	(@Param("expnum")Integer expnum,
+	 @Param("expitemname")String expitemname,
+	 @Param("itemname")String itemname,
+	 @Param("expquantity")Integer expquantity);
+	
+	public List<ExpVO> expdataprint();
+	
 }

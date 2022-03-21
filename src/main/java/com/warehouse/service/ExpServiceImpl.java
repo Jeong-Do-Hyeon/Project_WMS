@@ -68,4 +68,22 @@ public class ExpServiceImpl implements ExpService {
 		return mapper.exppickdoList();
 	}
 
+	@Override
+	public List<ExpVO> expcomplete() {
+		// TODO Auto-generated method stub
+		return mapper.expcomplete();
+	}
+
+	@Override
+	public List<ExpVO> expdataprint() {
+		// TODO Auto-generated method stub
+		return mapper.expdataprint();
+	}
+
+	@Override
+	public void exppickdo(Integer expnum, String expitemname, String itemname, Integer expquantity) {
+		// TODO Auto-generated method stub
+		mapper.exppickdo(expnum, expitemname, itemname, expquantity);
+	}
+
 }

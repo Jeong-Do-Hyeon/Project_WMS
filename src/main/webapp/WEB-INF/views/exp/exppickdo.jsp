@@ -80,22 +80,57 @@ desired effect
   			
   			if(!isAdd) return;
   			
+  			let expnumArr = []
+			let expitemnameArr = []
+			let itemnameArr = []
+			let expquantityArr = []
+  			
   			$(".check:checked").each(function(){
+  				
   				let tr = $(this).parent().parent();
   				
   				let expnum = (tr.find("[name=d_expnum]").val());
   				let expitemname = (tr.find("[name=d_expitemname]").val());
   				let itemname = (tr.find("[name=d_itemname]").val());
-  				let expquantity = -(tr.find("[name=d_expquantity]").val());
+  				let expquantity = (tr.find("[name=d_expquantity]").val());
+  				
+  				console.log(expnum);
+  				console.log(expitemname);
+  				console.log(itemname);
+  				console.log(expquantity);
+  				
+  				expnumArr.push(expnum);
+  				expitemnameArr.push(expitemname);
+  				itemnameArr.push(itemname);
+  				expquantityArr.push(expquantity);
+  				
+  				
+  			})
+  			
+  			
+  			$.ajax({
+  				url : '/exp/exppickdo',
+  				type: 'post',
+  				dataType : 'text',
+  				data: {
+  					expnumArr : expnumArr,
+  					expitemnameArr : expitemnameArr,
+  					itemnameArr : itemnameArr,
+  					expquantityArr : expquantityArr,
+  					
+  				},
+  				success: function(data){
+  					if(data == "success"){
+  						alert("선택된 상품이 피킹되었습니다")
+  					}
+  				}
+  			
+  			})
+  				
   				
   			})
   		
   		})
-  		
-  		
-  		
-  		
-  	});
   	
   	</script>
 
@@ -146,7 +181,7 @@ desired effect
     				<input type="text" name="d_itemname" value='<c:out value="${ExpSubVO.itemname}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
     			<td class="text-center">
-    				<input type="text" name="d_expquantity" value='<c:out value="${ExpSubVO.expquantity}"></c:out>' style="width:100%; border:0; text-align:center;">
+    				<input type="text" name="d_expquantity" value='<c:out value="${ExpSubVO.expquantity}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
     			<!-- <td class="text-center"> 
     				<input type="date" name="d_impdate" value='<fmt:formatDate value="${ImpVO.impdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0; text-align:center;">

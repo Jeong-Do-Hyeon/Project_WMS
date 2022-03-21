@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -69,6 +70,36 @@ desired effect
     			<td class="text-center"><strong>출고일자</strong></td>
     		</tr>
     	</thead>
+    	<tbody>
+    		<c:forEach items="${expdataprint}" var="ExpVO" varStatus="status">
+    		<tr class="data" style="font-size: 12px; font-weight=600;">
+    			<td class="text-center">
+    				<input type="checkbox" class="check" value="${ExpVO.expnum}">
+    			<td>
+    				<input type="text" name="d_expnum" value='<c:out value="${ExpVO.expnum}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>
+    			</td>
+    			<td>
+    				<input type="text" name="d_expcomname" value='<c:out value="${ExpVO.expcomname}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>
+    			</td>
+    			<td>
+    				<input type="text" name="d_expcomperson" value='<c:out value="${ExpVO.expcomperson}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>
+    			</td>
+    			<td>
+    				<input type="text" name="d_expaddr" value='<c:out value="${ExpVO.expaddr}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>
+    			</td>
+    			<td>
+    				<input type="text" name="d_telnumber" value='<c:out value="${ExpVO.telnumber}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>
+    			</td>
+    			<td>
+    				<input type="text" name="d_expmethod" value='<c:out value="${ExpVO.expmethod}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>
+    			</td>
+    			<td>
+    				<input type="date" name="d_expdate" value='<fmt:formatDate value="${ExpVO.expdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>
+    			</td>
+    			</tr>
+    		</c:forEach>
+    	</tbody>	
+    	
     </table>
 
     </section>

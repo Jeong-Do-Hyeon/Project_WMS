@@ -15,5 +15,6 @@ public class ExpVO {
 	private String expmethod;
 	private Date expdate;
 	private String note;
+	private String status;
 	
 }

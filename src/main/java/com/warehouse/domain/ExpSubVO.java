@@ -11,5 +11,6 @@ public class ExpSubVO {
 	public String itemname;
 	public int expquantity;
 	public int expprice;
+	private String status;
 	
 }

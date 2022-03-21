@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -65,6 +66,24 @@ desired effect
     			<td class="text-center"><strong>출고일자</strong></td>
     		</tr>
     	</thead>
+    	<tbody>
+    	<c:forEach items="${expcomplete}" var="ExpVO" varStatus="status">
+    		<tr class="data" style="font-size: 12px; font-weight= 600;">
+    			<td class="text-center">
+    				<input type="checkbox" class="check">
+    			</td>
+    			<td class="text-center">
+    				<input type="text" name="d_expnum" value='<c:out value="${ExpVO.expnum}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    			</td>
+    			<td class="text-center">
+    				<input type="text" name="d_expcomname" value='<c:out value="${ExpVO.expcomname}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    			</td>
+    			<td class="text-center">
+    				<input type="date" name="d_expdate" value='<fmt:formatDate value="${ExpVO.expdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0; text-align:center;">
+    			</td>
+    		</tr>
+    		</c:forEach>
+    	</tbody>
     </table>
 
     </section>

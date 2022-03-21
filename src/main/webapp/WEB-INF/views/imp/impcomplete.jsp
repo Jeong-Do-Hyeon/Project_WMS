@@ -76,6 +76,7 @@ desired effect
 		
 		if(!isAdd) return;
 
+		let impsubindexArr = []
 		let impitemnameArr = []
 		let itemnameArr = []
 		let impdepotArr = []
@@ -99,6 +100,7 @@ desired effect
 			//let tr = $(this).parent().parent();
 			//console.log(tr.find("[name=supply1]").val());
 			
+			let impsubindex = (tr.find("[name=d_impsubindex]").val());
 			let impitemname = (tr.find("[name=d_impitemname]").val());
 			let itemname = (tr.find("[name=d_itemname]").val());
 			let impdepot = (tr.find("[name=d_impdepot]").val());
@@ -106,8 +108,10 @@ desired effect
 			let quantity = (tr.find("[name=d_quantity]").val());
 			let impdate = (tr.find("[name=d_impdate]").val());
 			
+			console.log(impsubindex);
+			
   			
-  		
+			impsubindexArr.push(impsubindex);
   			impitemnameArr.push(impitemname);
   			itemnameArr.push(itemname);
   			impdepotArr.push(impdepot);
@@ -123,7 +127,7 @@ desired effect
 			type: 'post',
 			dataType : 'text',
 			data: {
-				
+				impsubindexArr : impsubindexArr,
 				impitemnameArr : impitemnameArr,
 	  			itemnameArr : itemnameArr,
 	  			impdepotArr : impdepotArr,
@@ -207,6 +211,7 @@ desired effect
     			</td>
     			<td class="text-center">
     				<input type="date" name="d_impdate" style="width:100%; border:0; text-align:center;">
+    				<input type="hidden" name="d_impsubindex" value='<c:out value="${ImpSubVO.impsubindex}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     		</tr>
     		</c:forEach>

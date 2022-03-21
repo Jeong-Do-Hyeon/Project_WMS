@@ -153,6 +153,7 @@ public class ImpController {
 	@ResponseBody
 	@PostMapping("/impcomplete")
 	public ResponseEntity<String> checkAddInventory(
+			@RequestParam("impsubindexArr[]") List<Integer> impsubindexArr,
 			@RequestParam("impitemnameArr[]") List<String> impitemnameArr,
 			@RequestParam("itemnameArr[]") List<String> itemnameArr,
 			@RequestParam("impdepotArr[]") List<String> impdepotArr,
@@ -160,6 +161,7 @@ public class ImpController {
 			@RequestParam("quantityArr[]") List<Integer> quantityArr,
 			@RequestParam("impdateArr[]") List<String> impdateArr){
 		
+		log.info(impsubindexArr);
 		log.info(impitemnameArr);
 		log.info(itemnameArr);
 		log.info(impdepotArr);
@@ -173,7 +175,7 @@ public class ImpController {
 			
 			for(int i=0; i<impitemnameArr.size(); i++) {
 				
-			service.checkAddInventory(impitemnameArr.get(i), itemnameArr.get(i), impdepotArr.get(i), implocationArr.get(i), quantityArr.get(i), impdateArr.get(i));
+			service.checkAddInventoryCheck(impsubindexArr.get(i),impitemnameArr.get(i), itemnameArr.get(i), impdepotArr.get(i), implocationArr.get(i), quantityArr.get(i), impdateArr.get(i));
 			
 			}
 			

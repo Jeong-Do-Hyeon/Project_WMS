@@ -86,6 +86,7 @@ desired effect
     			</td>
     			<td class="text-center">
     				<input type="text" name="d_impdate" value='<fmt:formatDate value="${InventoryVO.impdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    				<input type="hidden" name="d_inventorynum" value='<c:out value="${InventoryVO.inventorynum}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     		</tr>
     	</c:forEach>

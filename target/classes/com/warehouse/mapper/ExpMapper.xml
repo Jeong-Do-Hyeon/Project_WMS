@@ -32,6 +32,7 @@
 
 	SELECT
 	
+	 status,
 	 expnum,
 	 expcomname,
 	 expcomperson,
@@ -80,10 +81,43 @@
 	FROM expsub
 
 </select>
+
+<update id="exppickdo">
+
+	UPDATE inventory SET
+		quantity = quantity - #{expquantity}
+	WHERE impitemname = #{expitemname} AND itemname = #{itemname}
+
+</update>
+
+<select id="expcomplete" resultType="com.warehouse.domain.ExpVO">
+
+	SELECT
 	
+		expnum,
+		expcomname,
+		expdate
+		
+	FROM exp
 
 
+</select>
+
+<select id="expdataprint" resultType="com.warehouse.domain.ExpVO">
+
+	SELECT
+	
+	 expnum,
+	 expcomname,
+	 expcomperson,
+	 expaddr,
+	 telnumber,
+	 expmethod,
+	 expdate
+	 
+	 FROM exp
 
 
+</select>
 
 </mapper>
