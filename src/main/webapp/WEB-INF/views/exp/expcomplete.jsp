@@ -7,6 +7,7 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- css, js 파일포함 -->
 <!-- 절대경로  /WEB-INF/views/include/header_info.jsp -->
 <%@include file="/WEB-INF/views/include/header_info.jsp" %>
@@ -36,6 +37,74 @@ desired effect
 
   <!-- Main Header -->
   <%@include file="/WEB-INF/views/include/header.jsp" %>
+  
+  <script>
+  	
+	$(document).ready(function(){
+  
+  	$("#export").on("click", function(){
+  		if($(".check:checked").length ==0){
+				alert("출고할 주문을 선택하세요")
+				return;
+			}
+  		
+  		let isExport = confirm("선택한 주문을 출고하시겠습니까?");
+  		
+  		if(!isExport) return;
+  		
+  		let expnumArr = []
+  		let expcomnameArr = []
+  		let expdateArr = []
+  		
+  		$(".check:checked").each(function(){
+				
+				let tr = $(this).parent().parent();
+				
+				let expnum = (tr.find("[name=d_expnum]").val());
+				let expcomname = (tr.find("[name=d_expcomname]").val());
+				let expdate = (tr.find("[name=d_expdate]").val());
+				
+				console.log(expnum);
+				console.log(expcomname);
+				console.log(expdate);
+				
+				expnumArr.push(expnum);
+				expcomnameArr.push(expcomname);
+				expdateArr.push(expdate);
+				
+				
+			})
+			
+			$.ajax({
+  				url : '/exp/expcomplete',
+  				type: 'post',
+  				dataType : 'text',
+  				data: {
+  					expnumArr : expnumArr,
+  					expcomnameArr : expcomnameArr,
+  					expdateArr : expdateArr,
+  					
+  				},
+  				success: function(data){
+  					if(data == "success"){
+  						alert("선택된 주문이 출고되었습니다")
+  					}
+  				}
+  			
+  			})
+  		
+  	}) 
+  
+	})
+  
+  
+  
+  
+  </script>
+  
+  
+  
+  
   
   <style>
   	table, th, td {

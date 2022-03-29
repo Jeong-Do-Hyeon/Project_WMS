@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.InfoMapper">
+
+<insert id="checkAdd">
+
+	INSERT INTO cominfo
+	
+	(infonum,
+	 comname,
+	 comperson,
+	 comaddr,
+	 telnumber,
+	 note)
+	 
+	 VALUES
+	 
+	 (infonum.nextval,
+	  #{comname},
+	  #{comperson},
+	  #{comaddr},
+	  #{telnumber},
+	  #{note})
+
+</insert>
+
+<select id="getList" resultType="com.warehouse.domain.ComInfoVO">
+
+	SELECT infonum, comname, comperson, comaddr, telnumber, note FROM cominfo
+
+</select>
+
+<delete id="checkDel">
+
+	DELETE FROM cominfo WHERE infonum = #{infonum}
+
+</delete>
+
+<update id="checkModify">
+
+	UPDATE cominfo SET
+		comname = #{comname},
+		comperson = #{comperson},
+		comaddr = #{comaddr},
+		telnumber = #{telnumber},
+		note = #{note}
+	
+	WHERE infonum = #{infonum}
+
+
+</update>
+
+
+</mapper>

@@ -22,7 +22,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/imp/impdatacreate">입고정보생성</a></li>
-            <li><a href="/imp/impqrcreate">바코드생성</a></li>
             <li><a href="/imp/impcomplete">입고처리</a></li>
           </ul>
         <li class="treeview">
@@ -34,12 +33,12 @@
           <ul class="treeview-menu">
             <li><a href="/exp/expdatacreate">출고정보생성</a></li>
             <li><a href="/exp/exppickchoice">피킹할당</a></li>
-            <li><a href="#">피킹리스트</a></li>
             <li><a href="/exp/exppickdo">피킹</a>
             <li><a href="/exp/expcomplete">출고</a></li>
             <li><a href="/exp/expdataprint">전표발행</a></li>
           </ul>
           <li><a href="/inventory/inventory"><i class="fa fa-link"></i> <span>재고정보</span></a></li>
+          <li><a href="/info/cominfo"><i class="fa fa-link"></i> <span>거래처정보</span></a></li>
           <li><a href="/usertable/adduser"><i class="fa fa-link"></i> <span>사용자추가</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->

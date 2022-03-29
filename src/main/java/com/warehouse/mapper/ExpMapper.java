@@ -1,5 +1,6 @@
 package com.warehouse.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -53,5 +54,9 @@ public interface ExpMapper {
 	(@Param("expitemname")String expitemname,
 	 @Param("itemname")String itemname);
 	
+	public void expcomplete
+	(@Param("expnum")Integer expnum,
+	 @Param("expcomname")String expcomname,
+	 @Param("expdate")String expdate);
 	
 }

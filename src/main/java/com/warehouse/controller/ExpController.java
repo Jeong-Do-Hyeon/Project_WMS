@@ -1,5 +1,6 @@
 package com.warehouse.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class ExpController {
 	public ResponseEntity<String> checkDel(
 			@RequestParam("expnumArr[]") List<Integer> expnumArr){
 		
-		log.info(expnumArr);
+		//log.info(expnumArr);
 		
 		ResponseEntity<String> entity = null;
 		
@@ -216,14 +217,6 @@ public class ExpController {
 		return entity;
 	}
 	
-	
-	
-	
-	
-	
-	
-
-	
 	@GetMapping("/exppickdo")
 	public String exppickdo(Model model) {
 		
@@ -234,15 +227,6 @@ public class ExpController {
 		return "/exp/exppickdo";
 		
 		
-	}
-	
-	@GetMapping("/expcomplete")
-	public String expcomplete(Model model) {
-		List<ExpVO> list = service.expcomplete();
-		
-		model.addAttribute("expcomplete", list);
-		
-		return "/exp/expcomplete";
 	}
 	
 	@ResponseBody
@@ -282,9 +266,54 @@ public class ExpController {
 		
 		return entity;
 	}
+
+	
+	@GetMapping("/expcomplete")
+	public String expcomplete(Model model) {
+		List<ExpVO> list = service.expcomplete();
+		
+		model.addAttribute("expcomplete", list);
+		
+		return "/exp/expcomplete";
+	}
 	
 	
-	
+	@ResponseBody
+	@PostMapping("/expcomplete")
+	public ResponseEntity<String> expcomplete(
+		@RequestParam("expnumArr[]")List<Integer> expnumArr,
+		@RequestParam("expcomnameArr[]")List<String> expcomnameArr,
+		@RequestParam("expdateArr[]")List<String> expdateArr){
+		
+		log.info(expnumArr);
+		log.info(expcomnameArr);
+		log.info(expdateArr);
+		
+		ResponseEntity<String> entity = null;
+		
+		try {
+			
+			for(int i=0; i<expnumArr.size(); i++) {
+				
+			service.expcomplete
+			(expnumArr.get(i),
+			 expcomnameArr.get(i),
+			 expdateArr.get(i));
+			}
+			
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+		}
+		
+		
+		return entity;
+	}
+		
+
 	
 	@GetMapping("/expdataprint")
 	public String expdataprint(Model model) {

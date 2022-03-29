@@ -1,5 +1,6 @@
 package com.warehouse.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -134,5 +135,10 @@ public class ExpServiceImpl implements ExpService {
 		mapper.assignment(expitemname, itemname, status);
 	}
 
-	
+	@Override
+	public void expcomplete(Integer expnum, String expcomname, String expdate) {
+		// TODO Auto-generated method stub
+		mapper.expcomplete(expnum, expcomname, expdate);
+	}
+
 }

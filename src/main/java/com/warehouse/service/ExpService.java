@@ -48,5 +48,7 @@ public interface ExpService {
 	public List<ExpVO> expdataprint();
 	
 	public Integer assign (String expitemname, String itemname);
+
+	public void expcomplete(Integer integer, String string, String date);
 	
 }
