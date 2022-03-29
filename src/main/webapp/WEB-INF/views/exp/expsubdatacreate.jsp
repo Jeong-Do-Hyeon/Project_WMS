@@ -77,10 +77,10 @@
 				let tr = $(this).parent().parent();
   				
   				let expnum = ${expnum};
-  				let expitemname = (tr.find("[name=expitemname]").val());
-  				let itemname = (tr.find("[name=itemname]").val());
-  				let expquantity = (tr.find("[name=expquantity]").val());
-  				let expprice = (tr.find("[name=expprice]").val());
+  				let expitemname = tr.find("[name=expitemname]").val();
+  				let itemname = tr.find("[name=itemname]").val();
+  				let expquantity = tr.find("[name=expquantity]").val();
+  				let expprice = tr.find("[name=expprice]").val();
   				
   				
  				expnumArr.push(expnum);

@@ -24,4 +24,6 @@ public interface ExpSubService {
 	
 	public List<ExpSubVO> getList(Integer expnum);
 	
+	public void assignment(Integer expnum);
+	
 }

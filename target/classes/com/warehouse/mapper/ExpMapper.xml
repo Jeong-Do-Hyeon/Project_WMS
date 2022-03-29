@@ -82,6 +82,24 @@
 
 </select>
 
+<select id="assign" resultType="Integer">
+
+	SELECT quantity
+	FROM inventory
+	WHERE impitemname = #{expitemname} AND itemname = #{itemname}
+
+</select>
+
+
+<update id="assignment">
+	
+	UPDATE expsub SET
+		status = #{status}
+	WHERE expitemname = #{expitemname} AND itemname = #{itemname}
+
+</update>
+
+
 <update id="exppickdo">
 
 	UPDATE inventory SET

@@ -36,6 +36,9 @@ public interface ExpService {
 	
 	public List<ExpVO> expcomplete();
 	
+	public void assignment
+	(String expitemname, String itemname, String status);
+	
 	public void exppickdo
 	(@Param("expnum")Integer expnum,
 	 @Param("expitemname")String expitemname,
@@ -43,5 +46,7 @@ public interface ExpService {
 	 @Param("expquantity")Integer expquantity);
 	
 	public List<ExpVO> expdataprint();
+	
+	public Integer assign (String expitemname, String itemname);
 	
 }

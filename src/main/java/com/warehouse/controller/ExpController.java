@@ -155,13 +155,74 @@ public class ExpController {
 
 	
 	@GetMapping("/exppickchoice")
-	public void exppickchoice(Model model) {
+	public String exppickchoice(Model model) {
 		List<ExpVO> list = service.getList();
 		
 		model.addAttribute("exppickchoice", list);
 		
+		return "/exp/exppickchoice";
+		
 		
 	}
+	
+	@ResponseBody
+	@PostMapping("/exppickchoice")
+	public ResponseEntity<String> assign(
+			@RequestParam("expitemnameArr[]") List<String> expitemnameArr,
+			@RequestParam("itemnameArr[]") List<String> itemnameArr,
+			@RequestParam("expquantityArr[]") List<Integer> expquantityArr){
+		
+		log.info(expitemnameArr);
+		log.info(itemnameArr);
+		log.info(expquantityArr);
+		
+		ResponseEntity<String> entity = null;
+		
+		Integer quantity = null;
+		
+		try {
+			
+			for(int i=0; i<expitemnameArr.size(); i++) {
+				
+				quantity = service.assign(expitemnameArr.get(i), itemnameArr.get(i));
+			
+			if(quantity != null) {
+				
+				if(expquantityArr.get(i) <= quantity) {
+					
+					service.assignment(expitemnameArr.get(i), itemnameArr.get(i), "완전할당");
+					
+				}else if(expquantityArr.get(i) > quantity){
+
+					service.assignment(expitemnameArr.get(i), itemnameArr.get(i), "부분할당");
+					
+				}else{
+					
+					service.assignment(expitemnameArr.get(i), itemnameArr.get(i), "미할당");
+				}
+				
+			}
+			
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			
+		}
+		}
+			catch(Exception e){
+			
+			e.printStackTrace();
+			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	
+	
+	
+	
+	
+	
+
 	
 	@GetMapping("/exppickdo")
 	public String exppickdo(Model model) {

@@ -2,6 +2,8 @@ package com.warehouse.service;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -86,4 +88,51 @@ public class ExpServiceImpl implements ExpService {
 		mapper.exppickdo(expnum, expitemname, itemname, expquantity);
 	}
 
+	/*
+	@Override
+	public void assignment(Integer expnum, String expitemname, String itemname, Integer expquantity) {
+		// TODO Auto-generated method stub
+		
+		mapper.assignment(expnum, expitemname, itemname, expquantity);
+		
+		String statusname  = "";
+		String status = "";
+		
+		List<ExpVO> getList = getList();
+		
+		// String[] statusName = new String[getList.size()];
+		
+		for(int i=0; i<getList.size(); i++) {
+			
+			// statusName[i] = (getList.get(i)).getStatus();
+			
+			statusname += (getList.get(i)).getStatus();
+			
+		}
+		
+		// 미할당, 부분할당, 완전할당
+		
+		if(statusname.contains("미할당") && statusname.contains("완전할당")) {
+			status = "부분할당";
+		}else if(statusname.contains("미할당")) {
+			status = "미할당";
+		}else {
+			status = "완전할당";
+		}
+	}
+	*/
+
+	@Override
+	public Integer assign(String expitemname, String itemname) {
+		// TODO Auto-generated method stub
+		return mapper.assign(expitemname, itemname);
+	}
+
+	@Override
+	public void assignment(String expitemname, String itemname, String status) {
+		// TODO Auto-generated method stub
+		mapper.assignment(expitemname, itemname, status);
+	}
+
+	
 }
