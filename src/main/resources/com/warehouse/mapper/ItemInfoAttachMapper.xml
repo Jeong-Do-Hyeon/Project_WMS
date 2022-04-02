@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.warehouse.mapper.ItemInfoAttachMapper">
+
+	<insert id="insert">
+		insert into iteminfoattach(uuid, uploadpath, filename, filetype, bno) 
+		values(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno})
+	</insert>
+	
+	<select id="findByBno" resultType="com.warehouse.domain.ItemInfoAttachVO">
+		select uuid, uploadpath, filename, filetype, bno from iteminfoattach where bno = #{bno}
+	</select>
+	
+	<delete id="delete">
+		delete from iteminfoattach where uuid = #{uuid}
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from iteminfoattach where bno = #{bno}
+	</delete>
+	
+	<select id="getOldFiles" resultType="com.warehouse.domain.ItemInfoAttachVO">
+		select uuid, uploadpath, filename, filetype, bno  from iteminfoattach where uploadpath = to_char(sysdate -1, 'yyyy\mm\dd')
+	</select>
+
+</mapper>  

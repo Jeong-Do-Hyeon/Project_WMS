@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.warehouse.domain.ComInfoVO;
 
-public interface InfoService {
+public interface ComInfoService {
 
 	public List<ComInfoVO> getList();
 	

@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.warehouse.domain.ComInfoVO;
 import com.warehouse.mapper.ExpMapper;
-import com.warehouse.mapper.InfoMapper;
+import com.warehouse.mapper.ComInfoMapper;
 
 import lombok.Setter;
 
 @Service
-public class InfoServiceImpl implements InfoService {
+public class ComInfoServiceImpl implements ComInfoService {
 
 	@Setter(onMethod_ = @Autowired)
-	private InfoMapper mapper;
+	private ComInfoMapper mapper;
 
 	
 	@Override

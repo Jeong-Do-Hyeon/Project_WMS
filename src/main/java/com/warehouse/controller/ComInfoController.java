@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.warehouse.domain.ComInfoVO;
 import com.warehouse.domain.ExpVO;
 import com.warehouse.service.ExpService;
-import com.warehouse.service.InfoService;
+import com.warehouse.service.ComInfoService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @AllArgsConstructor
-@RequestMapping("/info/*")
+@RequestMapping("/cominfo/*")
 @Controller
-public class InfoController {
+public class ComInfoController {
 
-	private InfoService service;
+	private ComInfoService service;
 
 	@GetMapping("/cominfo")
 	public void cominfo(Model model) {

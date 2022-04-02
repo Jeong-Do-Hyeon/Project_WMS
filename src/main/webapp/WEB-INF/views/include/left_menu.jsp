@@ -38,7 +38,8 @@
             <li><a href="/exp/expdataprint">전표발행</a></li>
           </ul>
           <li><a href="/inventory/inventory"><i class="fa fa-link"></i> <span>재고정보</span></a></li>
-          <li><a href="/info/cominfo"><i class="fa fa-link"></i> <span>거래처정보</span></a></li>
+          <li><a href="/cominfo/cominfo"><i class="fa fa-link"></i> <span>거래처정보</span></a></li>
+          <li><a href="/iteminfo/list"><i class="fa fa-link"></i> <span>제품정보</span></a></li>
           <li><a href="/usertable/adduser"><i class="fa fa-link"></i> <span>사용자추가</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
