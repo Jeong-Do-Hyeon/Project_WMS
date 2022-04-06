@@ -27,7 +27,7 @@ public class ItemInfoServiceImpl implements ItemInfoService {
 	@Setter(onMethod_ = @Autowired)
 	private ItemInfoAttachMapper attachMapper;
 	
-
+	@Transactional
 	@Override
 	public void register(ItemInfoVO board) {
 		// TODO Auto-generated method stub

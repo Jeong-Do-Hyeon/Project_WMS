@@ -209,5 +209,45 @@ desired effect
 
 <%@include file="/WEB-INF/views/include/plugin_js.jsp" %>
 
+	<script>
+	
+		$(document).ready(function() {
+
+			let actionForm = $("#actionForm");
+			
+			// 리스트에서 제목 클릭시 동작
+			$(".move").on("click", function(e) {
+
+				e.preventDefault(); // <a>태그의 기본적인 이벤트기능을 취소. 즉 링크기능취소.  
+
+				let bno = $(this).attr("href");
+				console.log("글번호" + bno);
+
+				//location.href = "/board/get?bno=" + bno; // /board/get?bno=1
+
+				actionForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href") + "'>");
+				actionForm.attr("action", "/iteminfo/get");
+
+				actionForm.submit();
+
+
+			});
+
+			
+		$(".paginate_button a").on("click", function(e){
+			e.preventDefault();
+
+			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+
+			console.log("click");
+
+			actionForm.submit();
+		});
+	});
+		
+		
+	</script>
+
+
 </body>
 </html>

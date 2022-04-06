@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -41,13 +42,15 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1> 제품상세정보 </h1>
+      <h1>
+           제품상세정보
+      </h1>
     </section>
 
     <!-- Main content -->
     <section class="content container-fluid">
 
-      <style>
+		<style>
         .uploadResult {
           width: 100%;
           background-color: gray;
@@ -90,9 +93,7 @@ desired effect
           align-items: center;
         }
         </style>
-     
-     
-     
+
       <!--------------------------
         | 글쓰기 폼 | BoardVO클래스의 필드명을 참고.
         -------------------------->
@@ -103,33 +104,54 @@ desired effect
               <h3 class="box-title">제품상세정보</h3>
             </div>
             <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="/iteminfo/register" method="post">
+            <form role="form" id="modifyForm" method="post" action="/iteminfo/modify">
+              <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum }" />'>
+              <input type="hidden" name="amount" value='<c:out value="${cri.amount }" />'>
+              <input type="hidden" name="type" value='<c:out value="${cri.type }" />'>
+              <input type="hidden" name="keyword" value='<c:out value="${cri.keyword }" />'>
+              
               <div class="box-body">
+              <div class="form-group">
+                  <label for="bno">Bno</label>
+                  <input type="text" class="form-control" id="bno" name="bno" value="${board.bno }" readonly="readonly">
+                </div>
                 <div class="form-group">
                   <label for="title">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
+                  <input type="text" class="form-control" id="title" name="title" value="${board.title }">
                 </div>
                 <div class="form-group">
                   <label for="content">Text area</label>
-                  <textarea class="form-control" rows="3" id="content" name="content"></textarea>
+                  <textarea class="form-control" rows="3" id="content" name="content">${board.content }</textarea>
                 </div>
                 <div class="form-group">
                   <label for="writer">Writer</label>
-                  <input type="text" class="form-control" id="writer" name="writer">
+                  <input type="text" class="form-control" id="writer" name="writer" value="${board.writer }" readonly="readonly">
                 </div>
-              </div>
+                <div class="form-group">
+                  <label for="regdate">RegDate</label> <!-- pattern="yyyy-MM-dd"  날짜포맷이 에러가 발생된다.-->
+                  <input type="text" class="form-control" id="regdate" name="regdate" value="<fmt:formatDate value="${board.regdate }" pattern="yyyy/MM/dd"/>" readonly="readonly">
+                </div>
+                <div class="form-group">
+                  <label for="updatedDate">Update Date</label>
+                  <input type="text" class="form-control" id="updatedDate" name="updatedDate" value="<fmt:formatDate value="${board.updatedDate }" pattern="yyyy/MM/dd"/>" readonly="readonly">
+                </div>
+             </div>
+            
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="btnModify" type="submit" class="btn btn-primary">Modify</button>
+                <button id="btnRemove" type="button" class="btn btn-danger">Remove</button>
+                <button id="btnList" type="button" class="btn btn-info">List</button>
               </div>
             </form>
           </div>
         </div>
-    </div>
+       
+        
+	</div>
 	
-  <!-- 파일업로드및 파일목록 출력위치-->
+	<!-- 파일업로드및 파일목록 출력위치-->
 	<div class="row">
 		<div class="col-md-12">
 			<div class="box box-primary">
@@ -159,7 +181,7 @@ desired effect
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED JS SCRIPTS -->
+<!-- REQUIRED JS SCRIPTS(with jquery) -->
 <%@include file="/WEB-INF/views/include/plugin_js.jsp" %>
 <script src="/bower_components/ckeditor/ckeditor.js"></script>
 
@@ -185,9 +207,116 @@ desired effect
 		
 	});
 </script>
+
 <script>
 
   $(document).ready(function(){
+
+    let formObj = $("#modifyForm");
+
+    //목록버튼 클릭시 동작
+    $("#btnList").on("click", function(){
+
+      formObj.attr("action", "/iteminfo/list");
+      formObj.attr("method", "get");
+
+      /* 리스트로 보내는 정보
+      <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum }" />'>
+      <input type="hidden" name="amount" value='<c:out value="${cri.amount }" />'>
+      <input type="hidden" name="type" value='<c:out value="${cri.type }" />'>
+      <input type="hidden" name="keyword" value='<c:out value="${cri.keyword }" />'>
+
+      */
+
+      let pageNumTag = $("input[name='pageNum']").clone();
+      let amountTag = $("input[name='amount']").clone();
+      let keywordTag = $("input[name='type']").clone();
+      let typeTag = $("input[name='keyword']").clone();
+
+      console.log(pageNumTag);
+      console.log(amountTag);
+      console.log(keywordTag);
+      console.log(typeTag);
+
+      formObj.empty(); // 폼의 모든 내용을 제거.
+
+      formObj.append(pageNumTag);
+      formObj.append(amountTag);
+      formObj.append(keywordTag);
+      formObj.append(typeTag);
+
+
+      formObj.submit();
+    });
+
+    $("#btnRemove").on("click", function(){
+
+      if(confirm("게시물을 삭제하겠습니까?")){
+        formObj.attr("action", "/iteminfo/remove");
+        formObj.submit();
+      }
+    });
+
+  });
+
+</script>
+
+<script>
+
+  $(document).ready(function(){
+	
+	// get.jsp와 동일하게 첨부된 파일정보를 가져오는 작업  
+	let bno = '${ board.bno}'; //현재 게시물 번호
+	// 1)처음 페이지 로딩시 호출하는 구문
+	$.getJSON("/iteminfo/getAttachList", {bno: bno}, function(arr){
+
+	//1) 
+	console.log(arr);  // BoardAttachVO클래스(fileType필드)
+	    
+	let uploadUL = $(".uploadResult ul");
+
+    let str = "";
+
+    $(arr).each(function(i, obj) {
+
+      if(obj.fileType){
+        //이미지파일출력
+        let fileCalPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+        str += "<li data-path='" + obj.uploadPath + "'";
+        str += " data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName +"' data-type='" + obj.fileType + "'>";
+        str += "<div>";
+        str += "<span>" + obj.fileName + "</span>";
+        str += "<button type='button' data-file='" + fileCalPath + "' ";
+        str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+        str += "<img src='/display?fileName=" + fileCalPath + "'>";
+        str += "</div>";
+        str += "</li>";
+
+
+
+      }else{
+        //일반파일출력
+        let fileCalPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
+        let fileLink = fileCalPath.replace(new RegExp(/\\/g), "/");
+        
+        str += "<li data-path='" + obj.uploadPath + "'";
+        str += " data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName +"' data-type='" + obj.fileType + "'>";
+        str += "<div>";
+        str += "<span>" + obj.fileName + "</span>";
+        str += "<button type='button' data-file='" + fileCalPath + "' ";
+        str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+        str += "<img src='/resources/img/attach.png'>";
+        str += "</div>";
+        str += "</li>";
+      }
+    });
+
+    console.log(str);
+
+    uploadUL.append(str);  
+  });  
+	  
+	  
 	// 업로드 파일을 선택시 change이벤트가 발생
     $("input[type='file']").change(function(e){
 
@@ -215,9 +344,9 @@ desired effect
         type:'POST',
         dataType:"json",
         success: function(result){ // result: 업로드된 파일첨부정보가 List컬렉션으로 스프링으로부터 받아옴.
-          console.log(result);  // AttachFileDTO 클래스
+          console.log(result);  // AttachFileDTO클래스(image필드)
 
-          	// 첨부된 파일정보를 출력
+          	// 첨부된 파일정보를 출력(파일 첨부작업시 호출)
       		showUploadResult(result);
         }
       });
@@ -298,17 +427,17 @@ desired effect
     // <form role="form"
     let formObj = $("form[role='form']");
 
-    // <button type="submit" class="btn btn-primary">Submit</button>
-    $("button[type='submit']").on("click", function(e){
+    // 수정버튼 클릭시 동작
+    $("#btnModify").on("click", function(e){
       e.preventDefault(); // 전송기능 취소
 
-      console.log("submit click");
+      console.log("modify click");
 
       // <input type="hidden" name="" value="파일정보">
 
       let str = "";
 
-      // 첨부된 파일목록의 태그를 통하여 정보를 참조
+      // 첨부된 파일목록의 태그를 통하여 정보를 참조. 파일첨부가 존재하지 않으면, 아래 선택자가 존재하지 않아서 밑에구문은 동작되지 않는다.
       $(".uploadResult ul li").each(function(i, obj){
         let jobj = $(obj);
 

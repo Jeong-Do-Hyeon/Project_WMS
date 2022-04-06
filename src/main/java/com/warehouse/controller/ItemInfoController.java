@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.warehouse.domain.ItemInfoAttachVO;
 import com.warehouse.domain.ItemInfoCriteria;
+import com.warehouse.domain.ItemInfoPageDTO;
 import com.warehouse.domain.ItemInfoVO;
 import com.warehouse.service.ItemInfoService;
 
@@ -68,6 +69,10 @@ public class ItemInfoController {
 		int total = service.getTotalCount(cri);
 		
 		log.info("total: " + total);
+		
+		ItemInfoPageDTO pageDTO = new ItemInfoPageDTO(cri, total);
+		model.addAttribute("pageMaker", pageDTO);
+		
 		
 	}
 	

@@ -63,6 +63,11 @@ public class ItemInfoUploadController {
 		
 	}
 	
+	@GetMapping("/uploadAjax")
+	public void uploadAjax() {
+		log.info("uploadAjax");
+	}
+	
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<List<ItemInfoAttachDTO>> uploadAjaxAction(MultipartFile[] uploadFile){

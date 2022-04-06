@@ -42,13 +42,9 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
-        <small>Optional description</small>
+        	제품상세정보
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
+      
     </section>
 
     <!-- Main content -->
@@ -61,7 +57,7 @@ desired effect
       <div class="col-md-12">   
        <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Board Read Page</h3>
+              <h3 class="box-title">제품상세정보</h3>
             </div>
             <!-- /.box-header -->
             
@@ -178,27 +174,6 @@ desired effect
 			</div>
 		</div>
 	</div>
-  
-  <!-- 댓글목록 출력부분 -->
-  <div class="row">
-    <div class="col-md-12">
-      <button type="button" id="btnReplyAdd" class="btn btn-primary">Reply Write</button>      
-    </div>
-  </div>
-  <!--댓글 출력-->
-  <div class="row">
-    <div class="col-md-12">
-      <div id="replyList">
-        
-      </div>
-    </div>
-  </div>
-  <!--댓글 페이징 출력-->
-  <div class="row" id="replyPaging">
-        
-  </div>
-    
-  </div>
     </section>
     <!-- /.content -->
   </div>
@@ -211,102 +186,6 @@ desired effect
 
 <!-- REQUIRED JS SCRIPTS(with jquery) -->
 <%@include file="/WEB-INF/views/include/plugin_js.jsp" %>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<script id="replyTemplate" type="text/x-handlebars-template">
-  {{#each .}}
-  <div class="modal-body">
-      <div class="form-group">
-        <label for="replyer" class="col-form-label rno"><b>No. <span class="reply-rno">{{rno}}</span></b></label>
-        <input type="text" class="form-control" name="replyer" readonly value="{{replyer}}">
-      </div>
-      <div class="form-group">
-        <label for="reply" class="col-form-label regdate">{{prettifyDate replydate}}</label>
-        <textarea class="form-control" name="reply" readonly>{{reply}}</textarea>
-      </div>
-      <div class="form-group">
-        <button type="button" class="btn btn-link btn-reply-modify">Modify</button>
-        <button type="button" class="btn btn-link btn-reply-delete">Delete</button>
-      </div>
-  </div>
-  
-  {{/each}}
-</script>
-
-<script>
-  // Handlebars 사용자정의 Helper : 댓글 작성일 밀리세컨드 데이타를 날짜포맷으로 변환하는 작업(2022/01/11)
-  Handlebars.registerHelper("prettifyDate", function(timeValue){
-    const date = new Date(timeValue);
-
-    return date.getFullYear() + "/" + date.getMonth() + 1 + "/" + date.getDate();
-
-  });
-
-
-
-  //1)댓글목록출력함수
-  // replyArr : 댓글데이타를 받을 파라미터 target : 댓글목록이 표시될 위치, templateObj : 템플릿을 참조하는 변수
-  let printData = function (replyArr, target, templateObj) {
-
-    let template = Handlebars.compile(templateObj.html());
-    let html = template(replyArr); // 댓글 템플릿소스와 데이터가 바인딩되어 결합된 소스
-    target.empty();
-    target.append(html);
-  }
-
-
-  //2)댓글페이징기능함수
-  // pageMaker : 페이징정보, target : 페이징이 출력될 위치.
-  let printPaging = function(pageMaker, target){
-
-    let pageInfoStr = "<div class='col-md-12'><div class='dataTables_paginate paging_simple_numbers' id='example2_paginate'><ul class='pagination'>";
-
-    if(pageMaker.prev){
-      pageInfoStr += "<li class='paginate_button previous ";
-			pageInfoStr += "id='example2_previous'><a href='" + (pageMaker.startPage - 1) + "'";
-			pageInfoStr += " aria-controls='example2' data-dt-idx='0' tabindex='0'>Previous</a></li>";
-    }
-
-    for(let i=pageMaker.startPage; i<= pageMaker.endPage; i++){
-      
-      let strClass = (pageMaker.cri.pageNum == i) ? 'active' : '';
-      pageInfoStr += "<li class='paginate_button " + strClass + "'><a href='" + i + "'>" + i + "</a></li>";
-    }
-
-    if(pageMaker.next){
-      pageInfoStr += "<li class='paginate_button next ";
-			pageInfoStr += "id='example2_next'><a href='" + (pageMaker.endPage + 1) + "'";
-			pageInfoStr += " aria-controls='example2' data-dt-idx='0' tabindex='0'>Next</a></li>";
-    }
-
-    pageInfoStr += "</ul></div></div>";
-
-    target.html(pageInfoStr);
-  }
-
-
-  //현재 게시물 번호
-  let bno = <c:out value="${ board.bno}" />;
-  let replyPage = 1;
-    
-  //현재 게시물번호에 해당하는 댓글목록 요청주소
-  let url = "/replies/pages/" + bno + "/" + replyPage + ".json";
-  getPage(url);
-
-  function getPage(url){
-    // 스프링에서 json포맷의 댓글목록과 페이징정보를 받아오는 구문
-    $.getJSON(url, function(data){
-
-        // data -> data.list, data.pageMaker
-
-        // 댓글목록 출력
-        printData(data.list, $("#replyList"), $("#replyTemplate"));
-        // 댓글페이징출력
-        printPaging(data.pageMaker, $("#replyPaging"));
-    });
-  }
-
-
-</script>
 
 
 
@@ -323,238 +202,11 @@ desired effect
 
     //목록 버튼 클릭시 동작
     $("#btnList").on("click", function(){
-      operForm.find("#bno").remove();
-      operForm.attr("action", "/board/list");
-      operForm.submit();
-    });
-    
-    //현재 게시물 번호
-    //let bno = <c:out value="${ board.bno}" />;
-    
-    //현재 게시물번호에 해당하는 댓글목록 요청주소
-    //let url = "/replies/pages/" + bno + "/1.json";
-    
-    //alert(url);
-    
-    // 현재게시물을 참조하는 댓글데이타 요청구문작성
-    // jquery에서 제공하는 ajax기능의 메서드이용.
-    /*
-    $.getJSON(url, function(data){
-        
-        
-        console.log("댓글총개수: " + data.replyCnt);
-        console.log("댓글출력개수: " + data.list.length);
-        console.log("댓글번호: " + data.list[0].rno);
-        console.log("댓글내용: " + data.list[0].reply);
-        console.log("댓글작성자: " + data.list[0].replyer);
-
-        let date = new Date(data.list[0].replydate);
-        console.log("댓글등록일: " + date);
-
-        let trStr = "";
-
-        for(let i=0; i<data.list.length; i++){
-          trStr += "<tr>";
-          trStr += "<td>" + data.list[i].rno + "</td>";
-          trStr += "<td>" + data.list[i].reply + "</td>";
-          trStr += "<td>" + data.list[i].replyer + "</td>";
-          trStr += "<td>" + date + "</td>";
-          trStr += "</tr>";
-
-          
-        }
-
-        $("#replyTable").append(trStr);
-
-        
-        
-        
-  });
-  */
-
-  // 댓글 페이지번호 클릭. 선택자가 동적인 태그로 작업된 경우에는 직접 이벤트를 추가할수 없다.(중요)
-  /*
-  $("li.paginate_button a").on("click", function(e){
-    e.preventDefault(); // <a>태그의 링크기능 취소
-    console.log("댓글 페이지번호 클릭");
-  });
-  */
-
-  //페이지 번호 클릭시.
-  $("#replyPaging").on("click", "li.paginate_button a", function(e){
-    e.preventDefault();
-    console.log("댓글 페이지번호 클릭");
-
-    replyPage = $(this).attr("href");
-    let url = "/replies/pages/" + bno + "/" + replyPage + ".json";
-    getPage(url);
-  });
-  
-  //댓글쓰기 대화상자
-  $("#btnReplyAdd").on("click", function(){
-    
-    // 댓글 대화상자 필드 초기화
-    $("#replyer").val("");
-    $("#reply").val("");
-
-    $("button#btnReplyWrite").show();
-    $("button#btnReplyModify").hide();
-
-
-    $("h5#exampleModalLabel").html("Reply Add");
-    $("#exampleModal").modal('show');
-  });
-  
-  
-  
-  //댓글저장버튼
-  $("#btnReplyWrite").on("click", function(){
-
-    $("h5#exampleModalLabel").html("Reply Add");
-
-    // 선택자 ID속성이 중복되지 않게 사용한다.
-    
-    let replyer = $("#replyer").val();  
-    let reply = $("#reply").val();
-
-    
-
-    let str = JSON.stringify({bno:${board.bno}, replyer:replyer, reply:reply});
-
-    console.log(str);
-
-
-    //return;
-
-    $.ajax({
-      type: 'post',
-      url : '/replies/new',
-      headers: {
-                "Content-Type" : "application/json","X-HTTP-Method-Override" : "POST"
-              },
-      dataType: 'text',
-      data: JSON.stringify({bno:${board.bno}, replyer:replyer, reply:reply}),
-      success: function(result){
-        if(result == "success"){
-          alert("댓글 데이타 삽입성공");
-
-           // 댓글 대화상자 필드 초기화
-        $("#replyer").val("");
-        $("#reply").val("");
-
-
-          $("#exampleModal").modal('hide');
-
-          replyPage = 1;
-    
-          //현재 게시물번호에 해당하는 댓글목록 요청주소
-          url = "/replies/pages/" + bno + "/" + replyPage + ".json";
-          getPage(url);
-
-        }
-      }
-    });
-
-  });
-
-  // 댓글목록에서 수정버튼 클릭시
-  /*
-  $("button.btn-reply-modify").on("click", function(){
-      console.log("댓글수정버튼");
-  });
-  */
-
-  $("#replyList").on("click", "button.btn-reply-modify", function(){
-    //console.log("댓글수정버튼");
-
-    let replyer = $(this).parents("div.modal-body").find("input[name='replyer']").val();
-    let rno = $(this).parents("div.modal-body").find("span.reply-rno").text();
-    let replydate = $(this).parents("div.modal-body").find("label.regdate").text();
-    let reply = $(this).parents("div.modal-body").find("textarea[name='reply']").val();
-
-    console.log("replyer: " + replyer);
-    console.log("rno: " + rno);
-    console.log("replydate: " + replydate);
-    console.log("reply: " + reply);
-
-    // 수정 모달대화상자에 댓글내용을 화면에 보여준다.
-    $("h5#exampleModalLabel").html("Reply Modify - ");
-    $("h5#exampleModalLabel").append("&nbsp;&nbsp;No. " + rno);
-    
-    $("#replyer").val(replyer);
-    $("#reply").val(reply);
-    $("#replybno").val(rno);
-
-    $("button#btnReplyWrite").hide();
-    $("button#btnReplyModify").show();
-
-    
-    $("#exampleModal").modal('show');
-  });
-
-  //댓글 수정대화상자에서 수정버튼 클릭시
-  $("button#btnReplyModify").on("click", function(){
-    //console.log("댓글 수정대화상자에서 수정버튼 클릭시");
-    // ajax -> spring
-    
-    $.ajax({
-      type: 'put',
-      url: '/replies/modify/' + $("#replybno").val(),
-      headers: {
-        "Content-Type" : "application/json", "X-HTTP-Method-Override" : "PUT"
-      },
-      dataType: 'text',
-      data: JSON.stringify({reply: $("#reply").val()}),
-      success: function(result){
-        if(result == "success"){
-          alert("댓글 수정됨");
-
-        $("#replyer").val("");
-        $("#reply").val("");
-
-
-        $("#exampleModal").modal('hide');
-
-        //현재 게시물번호에 해당하는 댓글목록 요청주소
-        url = "/replies/pages/" + bno + "/" + replyPage + ".json";
-        getPage(url);
-        }
-      }
-    });
-    
-
-  });
-
-  //댓글목록에서 삭제버튼 클릭
-  $("#replyList").on("click", "button.btn-reply-delete", function(){
-
-    let rno = $(this).parents("div.modal-body").find("span.reply-rno").text();
-
-    if(!confirm("댓글 " + rno + "번을 삭제하겠습니까?")) { return;}
-
-    $.ajax({
-      type: 'delete',
-      url: '/replies/delete/' + ${ board.bno} + '/' + rno,
-      headers: {
-        "Content-Type" : "application/json", "X-HTTP-Method-Override" : "DELETE"
-      },
-      dataType:'text',
-      success: function(result){
-        if(result == "success"){
-          alert("댓글삭제됨");
-
-          $("#exampleModal").modal('hide');
-
-          //현재 게시물번호에 해당하는 댓글목록 요청주소
-          url = "/replies/pages/" + bno + "/" + replyPage + ".json";
-          getPage(url);
-        }
-      }
+    	operForm.find("#bno").remove();
+        operForm.attr("action", "/iteminfo/list");
+        operForm.submit();
     });
   });
-
-
-});
 
 
 
@@ -563,7 +215,7 @@ $(document).ready(function(){
 
   let bno = '${ board.bno}'; //현재 게시물 번호
 
-  $.getJSON("/board/getAttachList", {bno: bno}, function(arr){
+  $.getJSON("/iteminfo/getAttachList", {bno: bno}, function(arr){
 
 	//1) 
 	console.log(arr); // BoardAttachVO클래스
