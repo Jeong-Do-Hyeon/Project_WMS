@@ -84,6 +84,7 @@ desired effect
 			let expitemnameArr = []
 			let itemnameArr = []
 			let expquantityArr = []
+  			let statusArr = []
   			
   			$(".check:checked").each(function(){
   				
@@ -93,16 +94,19 @@ desired effect
   				let expitemname = (tr.find("[name=d_expitemname]").val());
   				let itemname = (tr.find("[name=d_itemname]").val());
   				let expquantity = (tr.find("[name=d_expquantity]").val());
+  				let status = (tr.find("[name=d_status]").val());
   				
   				console.log(expnum);
   				console.log(expitemname);
   				console.log(itemname);
   				console.log(expquantity);
+  				console.log(status)
   				
   				expnumArr.push(expnum);
   				expitemnameArr.push(expitemname);
   				itemnameArr.push(itemname);
   				expquantityArr.push(expquantity);
+  				statusArr.push(status);
   				
   				
   			})
@@ -117,6 +121,7 @@ desired effect
   					expitemnameArr : expitemnameArr,
   					itemnameArr : itemnameArr,
   					expquantityArr : expquantityArr,
+  					statusArr : statusArr
   					
   				},
   				success: function(data){
@@ -182,10 +187,9 @@ desired effect
     			</td>
     			<td class="text-center">
     				<input type="text" name="d_expquantity" value='<c:out value="${ExpSubVO.expquantity}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
+    				<input type="hidden" name="d_status" value='<c:out value="${ExpSubVO.status}"></c:out>'>
     			</td>
-    			<!-- <td class="text-center"> 
-    				<input type="date" name="d_impdate" value='<fmt:formatDate value="${ImpVO.impdate}" pattern="yyyy-MM-dd" />' style="width:100%; border:0; text-align:center;">
-    			</td> -->
+    				
     		</tr>
     		</c:forEach>
     	</tbody>

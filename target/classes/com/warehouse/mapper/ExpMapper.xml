@@ -76,7 +76,8 @@
 		expnum,
 		expitemname,
 		itemname,
-		expquantity
+		expquantity,
+		status
 		
 	FROM expsub
 
@@ -105,6 +106,14 @@
 	UPDATE inventory SET
 		quantity = quantity - #{expquantity}
 	WHERE impitemname = #{expitemname} AND itemname = #{itemname}
+
+</update>
+
+<update id="exppick">
+
+	UPDATE expsub SET
+		status = #{status}
+	WHERE expnum = #{expnum} AND expitemname = #{expitemname} AND itemname = #{itemname}
 
 </update>
 

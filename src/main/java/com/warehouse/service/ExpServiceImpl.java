@@ -82,13 +82,6 @@ public class ExpServiceImpl implements ExpService {
 		// TODO Auto-generated method stub
 		return mapper.expdataprint();
 	}
-
-	@Override
-	public void exppickdo(Integer expnum, String expitemname, String itemname, Integer expquantity) {
-		// TODO Auto-generated method stub
-		mapper.exppickdo(expnum, expitemname, itemname, expquantity);
-	}
-
 	/*
 	@Override
 	public void assignment(Integer expnum, String expitemname, String itemname, Integer expquantity) {
@@ -139,6 +132,18 @@ public class ExpServiceImpl implements ExpService {
 	public void expcomplete(Integer expnum, String expcomname, String expdate) {
 		// TODO Auto-generated method stub
 		mapper.expcomplete(expnum, expcomname, expdate);
+	}
+
+	@Override
+	public void exppick(Integer expnum, String expitemname, String itemname, Integer expquantity, String status) {
+		// TODO Auto-generated method stub
+		mapper.exppick(expnum, expitemname, itemname, expquantity, status);
+	}
+
+	@Override
+	public void exppickdo(Integer expnum, String expitemname, String itemname, Integer expquantity, String status) {
+		// TODO Auto-generated method stub
+		mapper.exppickdo(expnum, expitemname, itemname, expquantity, status);
 	}
 
 }

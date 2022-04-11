@@ -43,12 +43,16 @@ public interface ExpService {
 	(@Param("expnum")Integer expnum,
 	 @Param("expitemname")String expitemname,
 	 @Param("itemname")String itemname,
-	 @Param("expquantity")Integer expquantity);
+	 @Param("expquantity")Integer expquantity,
+	 @Param("status")String status);
 	
 	public List<ExpVO> expdataprint();
 	
 	public Integer assign (String expitemname, String itemname);
 
 	public void expcomplete(Integer integer, String string, String date);
+	
+	public void exppick
+	(Integer expnum, String expitemname, String itemname, Integer expquantity, String status);
 	
 }

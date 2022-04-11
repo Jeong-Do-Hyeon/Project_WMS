@@ -235,12 +235,14 @@ public class ExpController {
 			@RequestParam("expnumArr[]")List<Integer> expnumArr,
 			@RequestParam("expitemnameArr[]")List<String> expitemnameArr,
 			@RequestParam("itemnameArr[]")List<String> itemnameArr,
-			@RequestParam("expquantityArr[]")List<Integer> expquantityArr){
+			@RequestParam("expquantityArr[]")List<Integer> expquantityArr,
+			@RequestParam("statusArr[]")List<String> statusArr){
 		
 		log.info(expnumArr);
 		log.info(expitemnameArr);
 		log.info(itemnameArr);
 		log.info(expquantityArr);
+		log.info(statusArr);
 		
 		ResponseEntity<String> entity = null;
 		
@@ -252,8 +254,26 @@ public class ExpController {
 			(expnumArr.get(i),
 			 expitemnameArr.get(i),
 			 itemnameArr.get(i),
-			 expquantityArr.get(i));			
+			 expquantityArr.get(i),
+			 statusArr.get(i));
+			
+			if (statusArr.get(i) == "완전할당") {
+			service.exppick
+			(expnumArr.get(i),
+			 expitemnameArr.get(i),
+			 itemnameArr.get(i),
+			 expquantityArr.get(i),
+			 "피킹완료");
+			
+			}else if (statusArr.get(i) == "미할당") {
+			service.exppick
+			(expnumArr.get(i),
+			 expitemnameArr.get(i),
+		     itemnameArr.get(i),
+			 expquantityArr.get(i),
+			 "미할당");
 			}
+			}			
 			
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			
@@ -266,7 +286,7 @@ public class ExpController {
 		
 		return entity;
 	}
-
+	
 	
 	@GetMapping("/expcomplete")
 	public String expcomplete(Model model) {

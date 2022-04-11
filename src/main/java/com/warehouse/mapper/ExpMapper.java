@@ -41,7 +41,15 @@ public interface ExpMapper {
 	(@Param("expnum")Integer expnum,
 	 @Param("expitemname")String expitemname,
 	 @Param("itemname")String itemname,
-	 @Param("expquantity")Integer expquantity);
+	 @Param("expquantity")Integer expquantity,
+	 @Param("status")String status);
+	
+	public void exppick
+	(@Param("expnum")Integer expnum,
+	 @Param("expitemname")String expitemname,
+	 @Param("itemname")String itemname,
+	 @Param("expquantity")Integer expquantity,
+	 @Param("status")String status);
 	
 	public void assignment
 	(@Param("expitemname")String expitemname,
