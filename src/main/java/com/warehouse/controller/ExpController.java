@@ -257,7 +257,7 @@ public class ExpController {
 			 expquantityArr.get(i),
 			 statusArr.get(i));
 			
-			if (statusArr.get(i) == "완전할당") {
+			if (statusArr.get(i).equals("완전할당")) {
 			service.exppick
 			(expnumArr.get(i),
 			 expitemnameArr.get(i),
@@ -265,15 +265,16 @@ public class ExpController {
 			 expquantityArr.get(i),
 			 "피킹완료");
 			
-			}else if (statusArr.get(i) == "미할당") {
-			service.exppick
-			(expnumArr.get(i),
-			 expitemnameArr.get(i),
-		     itemnameArr.get(i),
-			 expquantityArr.get(i),
-			 "미할당");
+			}else if (statusArr.get(i).equals("미할당")) {
+				service.exppick
+				(expnumArr.get(i),
+				 expitemnameArr.get(i),
+			     itemnameArr.get(i),
+				 expquantityArr.get(i),
+				 "미할당");
+				}
+			
 			}
-			}			
 			
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			

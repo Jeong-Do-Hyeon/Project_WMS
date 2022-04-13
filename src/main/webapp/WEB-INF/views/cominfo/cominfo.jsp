@@ -109,11 +109,13 @@ desired effect
   			$(".check:checked").each(function(){
 				let tr = $(this).parent().parent();
   				
-  				let comname = (tr.find("[name=d_comname]").val());
-  				let comperson = (tr.find("[name=d_comperson]").val());
-  				let comaddr = (tr.find("[name=d_comaddr]").val());
-  				let telnumber = (tr.find("[name=d_telnumber]").val());
-  				let note = (tr.find("[name=d_note]").val());
+  				let comname = (tr.find("[name=comname]").val());
+  				let comperson = (tr.find("[name=comperson]").val());
+  				let comaddr = (tr.find("[name=comaddr]").val());
+  				let telnumber = (tr.find("[name=telnumber]").val());
+  				let note = (tr.find("[name=note]").val());
+  				
+  				console.log(comname);
   				
   	  			
   	  		
@@ -131,7 +133,7 @@ desired effect
   			});
   			
   			$.ajax({
-  				url : '/info/checkAdd',
+  				url : '/cominfo/checkAdd',
   				type: 'post',
   				dataType : 'text',
   				data: {
@@ -156,11 +158,11 @@ desired effect
   		
   		$("#delete").on("click", function(){
   			if($(".check:checked").length ==0){
-  				alert("삭제할 주문을 선택하세요")
+  				alert("삭제할 라인을 선택하세요")
   				return;
   			}
   			
-  			let isDel = confirm("선택한 주문을 삭제하시겠습니까?");
+  			let isDel = confirm("선택한 라인을 삭제하시겠습니까?");
   			
   			if(!isDel) return;
   			
@@ -179,7 +181,7 @@ desired effect
   			});
   			
   			$.ajax({
-  				url : '/info/checkdel',
+  				url : '/cominfo/checkdel',
   				type: 'post',
   				dataType : 'text',
   				data: {
@@ -187,7 +189,7 @@ desired effect
   				},
   				success: function(data){
   					if(data == "success"){
-  						alert("선택된 주문이 삭제되었습니다")
+  						alert("선택된 라인이 삭제되었습니다")
   					}
   				}
   			
@@ -200,11 +202,11 @@ desired effect
   		
   		$("#modify").on("click",function(){
   			if($(".check:checked").length == 0){
-  				alert("수정할 주문을 선택하세요")
+  				alert("수정할 라인을 선택하세요")
   				return;
   			}
   			
-			let isModify = confirm("선택한 주문을 수정하시겠습니까?");
+			let isModify = confirm("선택한 라인을 수정하시겠습니까?");
   			
   			if(!isModify) return;
   			
@@ -244,7 +246,7 @@ desired effect
   			
   			
   			$.ajax({
-  				url : '/info/checkModify',
+  				url : '/cominfo/checkModify',
   				type: 'post',
   				dataType : 'text',
   				data: {
@@ -257,7 +259,7 @@ desired effect
   				},
   				success: function(data){
   					if(data == "success"){
-  						alert("선택된 주문이 수정되었습니다")
+  						alert("선택된 라인이 수정되었습니다")
   					}
   				}
   			
@@ -302,7 +304,6 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
     
-    <button id="search">검색</button>
     <button id="add" onclick="rowAdd();">라인추가</button>
     <button id="save">신규등록</button>
     <button id="modify">수정</button>

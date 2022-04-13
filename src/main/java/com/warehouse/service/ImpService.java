@@ -20,5 +20,5 @@ public interface ImpService {
 	
 	public List<ImpSubVO> gettotalList();
 
-	public void checkAddInventoryCheck(Integer impsubindex, String impitemname, String itemname, String impdepot, String implocation, Integer quantity, String impdate);
+	public void checkAddInventoryCheck(Integer impsubindex, String impitemname, String itemname, String impdepot, String implocation, Integer quantity, String impdate, String status);
 }

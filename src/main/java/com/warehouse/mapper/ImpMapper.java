@@ -27,7 +27,8 @@ public interface ImpMapper {
 	 @Param("impdepot")String impdepot,
 	 @Param("implocation")String implocation,
 	 @Param("quantity")Integer quantity,
-	 @Param("impdate")String impdate);
+	 @Param("impdate")String impdate,
+	 @Param("status")String status);
 	
 	public void checkAddInventoryCheck
 	(@Param("impsubindex")Integer impsubindex,
@@ -36,6 +37,7 @@ public interface ImpMapper {
 	 @Param("impdepot")String impdepot,
 	 @Param("implocation")String implocation,
 	 @Param("quantity")Integer quantity,
-	 @Param("impdate")String impdate);
+	 @Param("impdate")String impdate,
+	 @Param("status")String status);
 
 }

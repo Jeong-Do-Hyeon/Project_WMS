@@ -4,7 +4,7 @@
 
 <insert id="checkAdd">
 
-	INSERT INTO impsub (impsubindex, impnum, impitemname, itemname, itemquantity, itemprice) VALUES (impsubindex.nextval, #{impnum}, #{impitemname}, #{itemname}, #{itemquantity}, #{itemprice}) 
+	INSERT INTO impsub (impsubindex, impnum, impitemname, itemname, itemquantity, itemprice, status) VALUES (impsubindex.nextval, #{impnum}, #{impitemname}, #{itemname}, #{itemquantity}, #{itemprice}, '미할당') 
 	
 </insert>
 
@@ -20,7 +20,8 @@
 	impitemname,
 	itemname,
 	itemquantity,
-	itemprice
+	itemprice,
+	status
 	 
 	FROM impsub
 	 
@@ -38,7 +39,8 @@
 	impitemname,
 	itemname,
 	itemquantity,
-	itemprice
+	itemprice,
+	status
 	 
 	FROM impsub
 	

@@ -57,8 +57,8 @@ public class ImpServiceImpl implements ImpService {
 	@Transactional
 	@Override
 	public void checkAddInventoryCheck(Integer impsubindex, String impitemname, String itemname, String impdepot, String implocation,
-			Integer quantity, String impdate) {
-		mapper.checkAddInventoryCheck(impsubindex, impitemname, itemname, impdepot, implocation, quantity, impdate);
+			Integer quantity, String impdate, String status) {
+		mapper.checkAddInventoryCheck(impsubindex, impitemname, itemname, impdepot, implocation, quantity, impdate, status);
 		
 	}
 

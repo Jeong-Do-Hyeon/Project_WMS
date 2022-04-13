@@ -215,7 +215,6 @@
   	</script>
     
     
-    <button id="search">검색</button>
     <button id="add" onclick="rowsubAdd();">라인추가</button>
     <button id="subsave">신규등록</button>
     <button id="submodify">수정</button>

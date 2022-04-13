@@ -47,7 +47,6 @@ desired effect
   		innerHtml += '<tr style="font-size: 12px; font-weight= 600;" id="'+trCnt+'">';
   		innerHtml += '	<td class="text-center"><input type="checkbox" id="check" name="check" class="check"></td>';
   		innerHtml += '	<td class="text-center" name="new">New</td>';
-  		innerHtml += '	<td class="text-center"></td>';
   		innerHtml += '	<td class="text-center"><input type="hidden" id="impnum" name="impnum" style="width:100%; border:0;"/></td>';
   		innerHtml += '	<td class="text-center"><input type="text" id="supply1" name="supply1" style="width:100%; border:0;"/></td>';
   		innerHtml += '	<td class="text-center"><input type="date" pattern="\d{4}-\d{2}-\d{2}" id="impdate" name="impdate" style="width:100%; border:0;"/></td>';
@@ -120,19 +119,7 @@ desired effect
   			
   			$(".check:checked").each(function(){
 				let tr = $(this).parent().parent();
-				//console.log(tr.find("#supply1").val());
-				//console.log(tr.find("#impdate").val());
-				//console.log(tr.find("#note").val());
-				
-				//let supply1 = tr.find("#supply1").val();
-				//let impdate = tr.find("#impdate").val();
-				//let note = tr.find("#note").val();
-  				
-  			
-  				
-  				//let tr = $(this).parent().parent();
-  				//console.log(tr.find("[name=supply1]").val());
-  				
+
   				let supply1 = (tr.find("[name=supply1]").val());
   				let impdate = (tr.find("[name=impdate]").val());
   				let note = (tr.find("[name=note]").val());
@@ -233,34 +220,17 @@ desired effect
   			
   			$(".check:checked").each(function(){
 				let tr = $(this).parent().parent();
-				//console.log(tr.find("#supply1").val());
-				//console.log(tr.find("#impdate").val());
-				//console.log(tr.find("#note").val());
-				
-				//let supply1 = tr.find("#supply1").val();
-				//let impdate = tr.find("#impdate").val();
-				//let note = tr.find("#note").val();
-  				
-  			
-  				
-  				//let tr = $(this).parent().parent();
-  				//console.log(tr.find("[name=supply1]").val());
   				
   				let impnum = (tr.find("[name=d_impnum]").val());
   				let supply1 = (tr.find("[name=d_supply1]").val());
   				let impdate = (tr.find("[name=d_impdate]").val());
   				let note = (tr.find("[name=d_note]").val());
   			
-  	  			
-  	  		
-  			// $(".check:checked").each(function(){
   				
-  			//	let tr = $(this).parent().parent();
-  				
-  				
-  			//	let supply1 = $(this).val();
-  	  		//	let impdate = $(this).next().val();
-  	  		//	let note = $(this).next().next().val();
+  				if(note == ""){
+  					note = " ";
+  				}
+  	  				
 
   	  			impnumArr.push(impnum);
   	  			supply1Arr.push(supply1);
@@ -327,7 +297,6 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
     
-    <button id="search">검색</button>
     <button id="add" onclick="rowAdd();">라인추가</button>
     <button id="save">신규등록</button>
     <button id="modify">수정</button>
@@ -339,7 +308,6 @@ desired effect
     		<tr class="menu">
     			<td class="text-center"><strong><input type="checkbox" id="checkAll" name="checkAll"></strong></td>
     			<td class="text-center"><strong>No.</strong></td>
-    			<td class="text-center"><strong>입고상태</strong></td>
     			<td class="text-center"><strong>입고번호</strong></td>
     			<td class="text-center"><strong>공급처</strong></td>
     			<td class="text-center"><strong>입고일자</strong></td>
@@ -353,9 +321,6 @@ desired effect
     				<input type="checkbox" class="check" value="${ImpVO.impnum}">
     			</td>
     			<td>
-    			</td>
-    			<td>
-    				<input type="text" name="d_status"	value='<c:out value="${ImpVO.status}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
     			<td>
     				<input type="text" name="d_impnum" value='<c:out value="${ImpVO.impnum}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>

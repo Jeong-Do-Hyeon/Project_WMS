@@ -35,7 +35,6 @@
             <li><a href="/exp/exppickchoice">피킹할당</a></li>
             <li><a href="/exp/exppickdo">피킹</a>
             <li><a href="/exp/expcomplete">출고</a></li>
-            <li><a href="/exp/expdataprint">전표발행</a></li>
           </ul>
           <li><a href="/inventory/inventory"><i class="fa fa-link"></i> <span>재고정보</span></a></li>
           <li><a href="/cominfo/cominfo"><i class="fa fa-link"></i> <span>거래처정보</span></a></li>

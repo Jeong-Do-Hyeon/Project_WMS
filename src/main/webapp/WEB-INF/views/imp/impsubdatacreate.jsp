@@ -16,7 +16,6 @@
   		innerHtml += '<tr style="font-size: 12px; font-weight= 600;" id="'+trCnt+'">';
   		innerHtml += '	<td class="text-center"><input type="checkbox" id="subcheck" name="subcheck" class="subcheck"></td>';
   		innerHtml += '	<td class="text-center" name="new">New</td>';
-  		innerHtml += '	<td class="text-center"></td>';
   		innerHtml += '	<td class="text-center"><input type="text" id="impitemname" name="impitemname" style="width:100%; border:0;"/></td>';
   		innerHtml += '	<td class="text-center"><input type="text" id="itemname" name="itemname" style="width:100%; border:0;"/></td>';
   		innerHtml += '	<td class="text-center"><input type="text" id="itemquantity" name="itemquantity" style="width:100%; border:0;"/></td>';
@@ -225,8 +224,6 @@
   		
   	</script>
     
-    
-    <button id="search">검색</button>
     <button id="add" onclick="rowsubAdd();">라인추가</button>
     <button id="subsave">신규등록</button>
     <button id="submodify">수정</button>
@@ -238,7 +235,6 @@
     		<tr class="menu">
     			<td class="text-center"><strong><input type="checkbox" id="subcheckAll" name="subcheckAll"></strong></td>
     			<td class="text-center"><strong>No.</strong></td>
-    			<td class="text-center"><strong>입고상태</strong></td>
     			<td class="text-center"><strong>상품이름</strong></td>
     			<td class="text-center"><strong>판매이름</strong></td>
     			<td class="text-center"><strong>입고예정수량</strong></td>
@@ -252,9 +248,6 @@
     				<input type="checkbox" class="subcheck" value="${ImpSubVO.impnum}">
     			</td>
     			<td>
-    			</td>
-    			<td>
-    				<input type="text" name="d_status"	value='<c:out value="${ImpSubVO.status}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
     			<td>
     				<input type="text" name="d_impitemname" value='<c:out value="${ImpSubVO.impitemname}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;">

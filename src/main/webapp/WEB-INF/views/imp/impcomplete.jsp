@@ -83,6 +83,7 @@ desired effect
 		let implocationArr = []
 		let quantityArr = []
 		let impdateArr = []
+		let statusArr = []
 
 		
 		$(".check:checked").each(function(){
@@ -107,8 +108,10 @@ desired effect
 			let implocation = (tr.find("[name=d_implocation]").val());
 			let quantity = (tr.find("[name=d_quantity]").val());
 			let impdate = (tr.find("[name=d_impdate]").val());
+			let status = (tr.find("[name=d_status]").val());
 			
 			console.log(impsubindex);
+			console.log(status);
 			
   			
 			impsubindexArr.push(impsubindex);
@@ -118,6 +121,7 @@ desired effect
   			implocationArr.push(implocation);
   			quantityArr.push(quantity);
   			impdateArr.push(impdate);
+  			statusArr.push(status);
   			
 		
 		});
@@ -133,7 +137,8 @@ desired effect
 	  			impdepotArr : impdepotArr,
 	  			implocationArr : implocationArr,
 	  			quantityArr : quantityArr,
-	  			impdateArr : impdateArr
+	  			impdateArr : impdateArr,
+	  			statusArr : statusArr
 			},
 			success: function(data){
 				if(data == "success"){
@@ -164,7 +169,6 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
     
-    <button id="search">검색</button>
     <button id="import">입고</button>
     <button id="refresh" onclick="window.location.reload()">새로고침</button>
     
@@ -212,6 +216,7 @@ desired effect
     			<td class="text-center">
     				<input type="date" name="d_impdate" style="width:100%; border:0; text-align:center;">
     				<input type="hidden" name="d_impsubindex" value='<c:out value="${ImpSubVO.impsubindex}"></c:out>' style="width:100%; border:0; text-align:center;">
+    				<input type="hidden" name="d_status" value='<c:out value="${ImpSubVO.status}"></c:out>' style="width:100%; border:0; text-align:center;">
     			</td>
     		</tr>
     		</c:forEach>

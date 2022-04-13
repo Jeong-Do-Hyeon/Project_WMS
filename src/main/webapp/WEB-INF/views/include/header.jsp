@@ -33,10 +33,7 @@
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <!-- Menu Footer-->
               <li class="user-footer" style="padding-top: 10px">
-              
-                <div class="pull-left">
-                  <a href="/usertable/modify" class="btn btn-default btn-flat">비밀번호 변경</a>
-                </div>
+
                 <div class="pull-right">
                   <a href="/usertable/logout" class="btn btn-default btn-flat">로그아웃</a>
                 </div>

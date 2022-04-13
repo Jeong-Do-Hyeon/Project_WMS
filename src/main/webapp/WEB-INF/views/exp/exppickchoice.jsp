@@ -130,7 +130,6 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
     
-    <button id="search">검색</button>
     <button id="assignment">할당</button>
     <button id="refresh" onclick="window.location.reload()">새로고침</button>
     
@@ -138,7 +137,6 @@ desired effect
     	<thead>
     		<tr class="menu">
     			<td class="text-center"><strong><input type="checkbox" name="check"></strong></td>
-    			<td class="text-center"><strong>할당상태</strong>
     			<td class="text-center"><strong>출고번호</strong></td>
     			<td class="text-center"><strong>출고처</strong>
     			<td class="text-center"><strong>출고일자</strong></td>
@@ -149,9 +147,6 @@ desired effect
     		<tr class="data" style="font-size: 12px; font-weight=600;">
     			<td class="text-center">
     				<input type="checkbox" class="check" value="${ExpVO.expnum}">
-    			</td>
-    			<td>
-    				<input type="text" name="d_status"	value='<c:out value="${ExpVO.status}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center;" readonly>
     			</td>
 				<td>
     				<input type="text" name="d_expnum" value='<c:out value="${ExpVO.expnum}"></c:out>' style="width:100%; border:none; background-color:transparent; text-align:center; " readonly>

@@ -358,7 +358,6 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
     
-    <button id="search">검색</button>
     <button id="add" onclick="rowAdd();">라인추가</button>
     <button id="save">신규등록</button>
     <button id="modify">수정</button>

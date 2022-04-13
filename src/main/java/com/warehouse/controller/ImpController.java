@@ -159,7 +159,8 @@ public class ImpController {
 			@RequestParam("impdepotArr[]") List<String> impdepotArr,
 			@RequestParam("implocationArr[]") List<String> implocationArr,
 			@RequestParam("quantityArr[]") List<Integer> quantityArr,
-			@RequestParam("impdateArr[]") List<String> impdateArr){
+			@RequestParam("impdateArr[]") List<String> impdateArr,
+			@RequestParam("statusArr[]")List<String> statusArr){
 		
 		log.info(impsubindexArr);
 		log.info(impitemnameArr);
@@ -168,6 +169,7 @@ public class ImpController {
 		log.info(implocationArr);
 		log.info(quantityArr);
 		log.info(impdateArr);
+		log.info(statusArr);
 		
 		ResponseEntity<String> entity = null;
 		
@@ -175,7 +177,7 @@ public class ImpController {
 			
 			for(int i=0; i<impitemnameArr.size(); i++) {
 				
-			service.checkAddInventoryCheck(impsubindexArr.get(i),impitemnameArr.get(i), itemnameArr.get(i), impdepotArr.get(i), implocationArr.get(i), quantityArr.get(i), impdateArr.get(i));
+			service.checkAddInventoryCheck(impsubindexArr.get(i),impitemnameArr.get(i), itemnameArr.get(i), impdepotArr.get(i), implocationArr.get(i), quantityArr.get(i), impdateArr.get(i), "입고완료");
 			
 			}
 			

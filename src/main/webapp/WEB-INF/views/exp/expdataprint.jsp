@@ -53,7 +53,6 @@ desired effect
     <!-- Main content -->
     <section class="content container-fluid">
     
-    <button id="search">검색</button>
     <button id="printforpdf">PDF출력</button>
     <button id="refresh" onclick="window.location.reload()">새로고침</button>
     

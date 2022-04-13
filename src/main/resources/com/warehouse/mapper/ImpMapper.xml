@@ -25,7 +25,7 @@
 	UPDATE SET
 		quantity = quantity + #{quantity}
 	WHEN NOT MATCHED THEN
-		INSERT (inventorynum, impitemname, itemname, impdepot, implocation, quantity, impdate , impsubindex)
+		INSERT (inventorynum, impitemname, itemname, impdepot, implocation, quantity, impdate, impsubindex)
 		VALUES (inventorynum.nextval, #{impitemname}, #{itemname}, #{impdepot}, #{implocation}, #{quantity}, #{impdate}, #{impsubindex})
 
 </insert>
